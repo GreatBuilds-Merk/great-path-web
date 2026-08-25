@@ -5,20 +5,19 @@ import Link from "next/link";
 import { BRAND, NAV } from "@/lib/brand";
 import Icon from "./Icon";
 
-// TODO: replace the <Mark /> placeholder with the real logo from
-// Logo Generic.png / Logo Navy background.png once it's in /public/brand/.
+// The road-to-destination mark. Background was flattened white in the source
+// file, so /public/brand/logo-road.png is a cleaned, trimmed, truly-transparent
+// version — use that one, not the original export.
 function Mark() {
   return (
-    <svg className="mark" viewBox="0 0 40 40" aria-hidden="true">
-      <rect width="40" height="40" rx="10" fill="var(--navy)" />
-      <path
-        d="M11 30L17 10M29 30L23 10"
-        stroke="var(--gold)"
-        strokeWidth="2.6"
-        strokeLinecap="round"
-      />
-      <path d="M20 15v3M20 21v3" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" />
-    </svg>
+    <img
+      className="mark"
+      src="/brand/logo-road.png"
+      alt=""
+      width={68}
+      height={40}
+      aria-hidden="true"
+    />
   );
 }
 

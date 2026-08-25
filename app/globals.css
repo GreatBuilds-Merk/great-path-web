@@ -242,9 +242,14 @@ header.site {
   color: var(--navy-ink);
 }
 .brand .mark {
-  width: 34px;
-  height: 34px;
+  width: auto;
+  height: 34px; /* wide mark — height-constrained so the road stays legible */
   flex: 0 0 auto;
+}
+@media (min-width: 861px) {
+  .brand .mark {
+    height: 40px;
+  }
 }
 .brand b span {
   color: var(--gold-deep);
