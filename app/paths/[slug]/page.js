@@ -107,11 +107,11 @@ export default function PathPage({ params }) {
       <section className="band-alt">
         <div className="wrap">
           <div className="section-head">
-            <div className="eyebrow">How it works</div>
-            <h2 style={{ marginTop: 8 }}>Three steps, then a rhythm.</h2>
+            <div className="eyebrow">{HOW_IT_WORKS.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{HOW_IT_WORKS.headline}</h2>
           </div>
           <div className="grid cols-3">
-            {HOW_IT_WORKS.map((s) => (
+            {HOW_IT_WORKS.steps.map((s) => (
               <div className="card step" key={s.n}>
                 <span className="n">{s.n}</span>
                 <h3>{s.title}</h3>

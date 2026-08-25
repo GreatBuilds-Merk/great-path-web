@@ -1,80 +1,136 @@
 import Link from "next/link";
-import { BRAND, PATHS, PRICING, HOW_IT_WORKS, FIT } from "@/lib/brand";
+import {
+  BRAND,
+  HERO,
+  TOOLS,
+  PROBLEM,
+  HOW_IT_WORKS,
+  DIFFERENCE,
+  PATHS,
+  WHAT_CHANGES,
+  PROOF,
+  PRICING,
+  FAQ,
+  FOUNDER,
+} from "@/lib/brand";
 import Icon from "@/components/Icon";
-import OnThePath from "@/components/OnThePath";
+import BriefMockup from "@/components/BriefMockup";
 
 export default function Home() {
-  const featured = PATHS.filter((p) => p.featured);
-  const rest = PATHS.filter((p) => !p.featured);
+  const flagship = PATHS.find((p) => p.flagship);
+  const others = PATHS.filter((p) => !p.flagship && p.slug !== "ai-readiness");
 
   return (
     <>
       {/* 1 — HERO ---------------------------------------------------------- */}
-      <section className="band-dark" style={{ paddingTop: 48 }}>
+      <section className="band-dark" style={{ paddingTop: 44 }}>
         <div className="wrap">
-          <div
-            style={{
-              display: "grid",
-              gap: 36,
-              gridTemplateColumns: "1fr",
-              alignItems: "center",
-            }}
-            className="hero-grid"
-          >
+          <div className="hero-grid" style={{ display: "grid", gap: 36, alignItems: "center" }}>
             <div>
               <div className="eyebrow" style={{ color: "var(--gold)" }}>
-                {BRAND.tagline}
+                {HERO.eyebrow}
               </div>
-              <h1 style={{ marginTop: 14 }}>
-                Know exactly where your business is on the road to where you want it.
-              </h1>
-              <p className="lead" style={{ marginTop: 16, maxWidth: 520 }}>
-                {BRAND.promise}
+              <h1 style={{ marginTop: 14 }}>{HERO.headline}</h1>
+              <p className="lead" style={{ marginTop: 16, maxWidth: 540 }}>
+                {HERO.sub}
               </p>
+
               <div className="btn-row" style={{ marginTop: 26 }}>
-                <Link href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
-                  Book a Call
-                </Link>
-                <Link href="/tools/where-are-you" className="btn btn-ghost-light btn-lg">
-                  See where you are — free
-                </Link>
+                <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
+                  Book a free discovery call
+                </a>
+                <a href="#how" className="btn btn-ghost-light btn-lg">
+                  See how it works
+                </a>
               </div>
+
+              <ul
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "8px 20px",
+                  marginTop: 26,
+                  fontSize: 13.5,
+                  color: "var(--on-dark-muted)",
+                }}
+              >
+                {HERO.trust.map((t, i) => (
+                  <li key={t} style={{ display: "flex", gap: 7, alignItems: "center" }}>
+                    <span style={{ color: "var(--gold)" }}>
+                      <Icon name="check" size={15} stroke={3} />
+                    </span>
+                    <span style={i === HERO.trust.length - 1 ? { fontWeight: 700, color: "#fff" } : undefined}>
+                      {t}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <OnThePath dark />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <BriefMockup />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 2 — THE PROBLEM --------------------------------------------------- */}
+      {/* 2 — TOOLS STRIP --------------------------------------------------- */}
+      <section style={{ padding: "34px 0", borderBottom: "1px solid var(--line)" }}>
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <p className="small" style={{ marginBottom: 16 }}>
+            Works with the tools you already run your business on
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "12px 30px",
+              fontWeight: 700,
+              fontSize: 15,
+              color: "var(--muted)",
+            }}
+          >
+            {TOOLS.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3 — THE PROBLEM --------------------------------------------------- */}
       <section>
-        <div className="wrap narrow">
-          <h2>Your numbers already exist. Nobody turns them into a decision.</h2>
-          <div className="stack" style={{ marginTop: 22 }}>
-            <p className="lead">
-              They're in your accounting software. They're in your point of sale. They're in a
-              spreadsheet someone built three years ago.
-            </p>
-            <p className="lead">
-              So at the end of every month you get reports that tell you what happened, and none
-              that tell you what to do about it.
-            </p>
-            <p className="lead" style={{ color: "var(--navy-ink)", fontWeight: 600 }}>
-              That's the gap we close.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3 — HOW IT WORKS -------------------------------------------------- */}
-      <section className="band-alt">
         <div className="wrap">
           <div className="section-head">
-            <div className="eyebrow">How it works</div>
-            <h2 style={{ marginTop: 8 }}>Three steps, then a rhythm.</h2>
+            <div className="eyebrow">{PROBLEM.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{PROBLEM.headline}</h2>
+            <p>{PROBLEM.sub}</p>
           </div>
           <div className="grid cols-3">
-            {HOW_IT_WORKS.map((s) => (
+            {PROBLEM.cards.map((c) => (
+              <div className="card" key={c.title}>
+                <div className="ico" style={{ marginBottom: 12 }}>
+                  <Icon name={c.icon} size={22} />
+                </div>
+                <h3>{c.title}</h3>
+                <p style={{ marginTop: 8 }}>{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4 — HOW IT WORKS -------------------------------------------------- */}
+      <section id="how" className="band-alt" style={{ scrollMarginTop: 80 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{HOW_IT_WORKS.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{HOW_IT_WORKS.headline}</h2>
+            <p>{HOW_IT_WORKS.sub}</p>
+          </div>
+
+          <div className="grid cols-3">
+            {HOW_IT_WORKS.steps.map((s) => (
               <div className="card step" key={s.n}>
                 <span className="n">{s.n}</span>
                 <h3>{s.title}</h3>
@@ -82,125 +138,212 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <p
+            style={{
+              marginTop: 22,
+              padding: "14px 18px",
+              background: "rgba(199,166,90,.14)",
+              borderLeft: "3px solid var(--gold)",
+              borderRadius: 8,
+              fontSize: 14.5,
+            }}
+          >
+            {HOW_IT_WORKS.flywheel}
+          </p>
+
+          <div className="btn-row" style={{ marginTop: 26 }}>
+            <a href={BRAND.bookingUrl} className="btn btn-primary btn-lg">
+              Book a free discovery call
+            </a>
+          </div>
+          <p className="small" style={{ marginTop: 10 }}>
+            {HOW_IT_WORKS.ctaNote}
+          </p>
         </div>
       </section>
 
-      {/* 4 — THE PATHS ----------------------------------------------------- */}
+      {/* 5 — WHY DIFFERENT ------------------------------------------------- */}
       <section>
         <div className="wrap">
           <div className="section-head">
-            <div className="eyebrow">The Paths</div>
-            <h2 style={{ marginTop: 8 }}>Start by choosing where you're going.</h2>
-            <p>
-              Every Path has its own destination, its own set of numbers, and its own actions.
-              We'll help you pick the one that fits.
-            </p>
+            <div className="eyebrow">{DIFFERENCE.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{DIFFERENCE.headline}</h2>
+            <p>{DIFFERENCE.sub}</p>
           </div>
+
+          <p
+            style={{
+              fontSize: "clamp(21px,3.4vw,28px)",
+              fontWeight: 800,
+              color: "var(--navy)",
+              letterSpacing: "-.02em",
+              borderLeft: "4px solid var(--gold)",
+              paddingLeft: 18,
+              margin: "0 0 32px",
+            }}
+          >
+            “{DIFFERENCE.quote}”
+          </p>
 
           <div className="grid cols-3">
-            {featured.map((p) => (
-              <Link href={`/paths/${p.slug}`} className="card path-card" key={p.slug}>
-                <div className="ico">
-                  <Icon name={p.icon} size={22} />
-                </div>
-                <span className="tag">{p.tagline}</span>
-                <h3>{p.name}</h3>
-                <p>{p.short}</p>
-                <span className="more">
-                  Explore this Path <Icon name="arrow" size={15} />
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          <div className="grid cols-3" style={{ marginTop: 18 }}>
-            {rest.map((p) => (
-              <Link href={`/paths/${p.slug}`} className="card path-card" key={p.slug}>
-                <div className="ico">
-                  <Icon name={p.icon} size={22} />
-                </div>
-                <span className="tag">{p.tagline}</span>
-                <h3>{p.name}</h3>
-                <p>{p.short}</p>
-                <span className="more">
-                  Explore this Path <Icon name="arrow" size={15} />
-                </span>
-              </Link>
+            {DIFFERENCE.cards.map((c) => (
+              <div className="card" key={c.title}>
+                <h3>{c.title}</h3>
+                <p style={{ marginTop: 8 }}>{c.body}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5 — SEE A REAL ONE ------------------------------------------------ */}
+      {/* 6 — THE PATHS ----------------------------------------------------- */}
       <section className="band-alt">
         <div className="wrap">
           <div className="section-head">
-            <div className="eyebrow">Examples</div>
-            <h2 style={{ marginTop: 8 }}>This is what shows up every month.</h2>
+            <div className="eyebrow">Our Paths</div>
+            <h2 style={{ marginTop: 8 }}>Find the path that fits where you are.</h2>
             <p>
-              Real briefings from real businesses. Names and identifying details changed at the
-              owners' request — the numbers and the analysis are theirs.
+              One engine, five ways to put it to work. Start with the flagship — or jump straight
+              to what you need today.
             </p>
           </div>
 
-          {/* TODO: replace with <BriefingPreview /> once the renderer lands (Track B, week 3) */}
-          <div className="placeholder">
-            Example briefing previews go here — Summit Mechanical, Clark Custom Homes, and two
-            more. Built in week 3 from the shared briefing renderer.
-          </div>
-
-          <div className="btn-row" style={{ marginTop: 24 }}>
-            <Link href="/examples" className="btn btn-primary">
-              See the example briefings
+          {flagship && (
+            <Link
+              href={`/paths/${flagship.slug}`}
+              className="card path-card"
+              style={{ borderColor: "var(--gold)", borderWidth: 2, marginBottom: 18 }}
+            >
+              <span className="badge">{flagship.badge}</span>
+              <h3 style={{ fontSize: "clamp(21px,3vw,26px)", marginTop: 6 }}>
+                The {flagship.name} Path
+              </h3>
+              <p>{flagship.promise}</p>
+              <span className="more">
+                Explore this Path <Icon name="arrow" size={15} />
+              </span>
             </Link>
+          )}
+
+          <div className="grid cols-4">
+            {others.map((p) => (
+              <Link href={`/paths/${p.slug}`} className="card path-card" key={p.slug}>
+                <span className="tag">{p.badge}</span>
+                <h3>The {p.name} Path</h3>
+                <p>{p.short}</p>
+                <span className="more">
+                  Explore <Icon name="arrow" size={15} />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 6 — FREE TOOL ----------------------------------------------------- */}
+      {/* 7 — WHAT CHANGES -------------------------------------------------- */}
+      <section>
+        <div className="wrap narrow">
+          <div className="eyebrow">{WHAT_CHANGES.eyebrow}</div>
+          <h2 style={{ marginTop: 8 }}>{WHAT_CHANGES.headline}</h2>
+          <p className="lead" style={{ marginTop: 12 }}>
+            {WHAT_CHANGES.sub}
+          </p>
+          <ul className="fit-list fit-yes" style={{ marginTop: 24 }}>
+            {WHAT_CHANGES.points.map((t) => (
+              <li key={t}>
+                <span className="mk">
+                  <Icon name="check" size={17} />
+                </span>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 8 — PROOF --------------------------------------------------------- */}
+      <section className="band-alt">
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{PROOF.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{PROOF.headline}</h2>
+          </div>
+
+          <div className="grid cols-2">
+            {PROOF.cases.map((c) => (
+              <div className="card" key={c.title}>
+                <h3>{c.title}</h3>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3,1fr)",
+                    gap: 12,
+                    margin: "18px 0",
+                    paddingBottom: 18,
+                    borderBottom: "1px solid var(--line)",
+                  }}
+                >
+                  {c.stats.map((s) => (
+                    <div key={s.label}>
+                      <div
+                        style={{
+                          fontSize: "clamp(17px,2.4vw,21px)",
+                          fontWeight: 800,
+                          color: "var(--navy)",
+                          letterSpacing: "-.02em",
+                        }}
+                      >
+                        {s.value}
+                      </div>
+                      <div style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 3, lineHeight: 1.3 }}>
+                        {s.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p>{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9 — FREE TOOLS ---------------------------------------------------- */}
       <section>
         <div className="wrap">
           <div
             className="card"
-            style={{
-              display: "grid",
-              gap: 20,
-              alignItems: "center",
-              borderColor: "var(--gold)",
-              borderWidth: 2,
-            }}
+            style={{ borderColor: "var(--gold)", borderWidth: 2 }}
           >
-            <div>
-              <div className="eyebrow">Free, no signup</div>
-              <h2 style={{ marginTop: 8, fontSize: "clamp(23px,3.6vw,30px)" }}>
-                Where are you on the path right now?
-              </h2>
-              <p style={{ marginTop: 10, color: "var(--muted)" }}>
-                Five questions, sixty seconds. We'll show you your position, whether you're on
-                pace for your goal, and where you'll land if nothing changes. Seasonality
-                included — because a straight line lies to most businesses.
-              </p>
-              <div className="btn-row" style={{ marginTop: 20 }}>
-                <Link href="/tools/where-are-you" className="btn btn-gold btn-lg">
-                  Find your position
-                </Link>
-                <Link href="/tools/data-template" className="btn btn-ghost">
-                  Get the free data template
-                </Link>
-              </div>
+            <div className="eyebrow">Free · no obligation</div>
+            <h2 style={{ marginTop: 8, fontSize: "clamp(23px,3.6vw,30px)" }}>
+              Not sure where you stand?
+            </h2>
+            <p style={{ marginTop: 10, color: "var(--muted)", maxWidth: 620 }}>
+              Take the AI Readiness Audit for a personalized score and three specific next steps.
+              Or find your position on the path in sixty seconds — seasonality included, because a
+              straight line lies to most businesses.
+            </p>
+            <div className="btn-row" style={{ marginTop: 20 }}>
+              <Link href="/tools/ai-readiness-audit" className="btn btn-gold btn-lg">
+                Take the free audit
+              </Link>
+              <Link href="/tools/where-are-you" className="btn btn-ghost">
+                Find your position
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7 — PRICING TEASER ------------------------------------------------ */}
+      {/* 10 — PRICING TEASER ----------------------------------------------- */}
       <section className="band-alt">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">Pricing</div>
             <h2 style={{ marginTop: 8 }}>Set up once. Then it's a monthly rhythm.</h2>
           </div>
-
           <div className="grid cols-4">
             {PRICING.map((t) => (
               <div className={`card price-card${t.highlight ? " featured" : ""}`} key={t.id}>
@@ -219,7 +362,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
           <div className="btn-row" style={{ marginTop: 24 }}>
             <Link href="/pricing" className="btn btn-primary">
               See what's included
@@ -228,102 +370,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8 — FIT ----------------------------------------------------------- */}
+      {/* 11 — FOUNDER ------------------------------------------------------ */}
       <section>
-        <div className="wrap">
-          <div className="section-head">
-            <div className="eyebrow">Honest fit</div>
-            <h2 style={{ marginTop: 8 }}>This isn't for everyone.</h2>
-          </div>
+        <div className="wrap narrow">
+          <div className="eyebrow">Why Great Path exists</div>
+          <blockquote
+            style={{
+              fontSize: "clamp(18px,2.8vw,23px)",
+              lineHeight: 1.5,
+              color: "var(--navy-ink)",
+              fontWeight: 600,
+              borderLeft: "4px solid var(--gold)",
+              paddingLeft: 20,
+              margin: "18px 0 16px",
+            }}
+          >
+            “{FOUNDER.quote}”
+          </blockquote>
+          <p style={{ fontWeight: 700 }}>
+            — {FOUNDER.name}, <span style={{ color: "var(--muted)", fontWeight: 500 }}>{FOUNDER.title}</span>
+          </p>
 
-          <div className="grid cols-2">
-            <div className="card">
-              <h3 style={{ color: "var(--ahead)" }}>It's a good fit if</h3>
-              <ul className="fit-list fit-yes" style={{ marginTop: 10 }}>
-                {FIT.yes.map((t) => (
-                  <li key={t}>
-                    <span className="mk">
-                      <Icon name="check" size={17} />
-                    </span>
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card">
-              <h3 style={{ color: "var(--behind)" }}>It's probably not if</h3>
-              <ul className="fit-list fit-no" style={{ marginTop: 10 }}>
-                {FIT.no.map((t) => (
-                  <li key={t}>
-                    <span className="mk">
-                      <Icon name="x" size={17} />
-                    </span>
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px 10px",
+              marginTop: 24,
+            }}
+          >
+            {FOUNDER.values.map((v) => (
+              <span key={v} className="badge">
+                {v}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 9 — DAN ----------------------------------------------------------- */}
+      {/* 12 — FAQ ---------------------------------------------------------- */}
       <section className="band-alt">
         <div className="wrap narrow">
-          <div style={{ display: "grid", gap: 22, justifyItems: "start" }}>
-            {/* TODO: swap for Dan's headshot in /public/brand/dan.jpg */}
-            <div
-              style={{
-                width: 104,
-                height: 104,
-                borderRadius: "50%",
-                background: "var(--navy)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "var(--gold)",
-                fontWeight: 800,
-                fontSize: 32,
-              }}
-              aria-label="Photo placeholder"
-            >
-              DM
-            </div>
-            <div>
-              <div className="eyebrow">Who you're working with</div>
-              <h2 style={{ marginTop: 8 }}>You're hiring a person, not a platform.</h2>
-              <p className="lead" style={{ marginTop: 14 }}>
-                {/* TODO: replace with Dan's real bio — three sentences, plain language. */}
-                Placeholder bio. Three sentences about who you are, the businesses you've worked
-                in, and why you built this. Small business owners buy the person before they buy
-                the product, so this is worth writing carefully.
-              </p>
-              <div className="btn-row" style={{ marginTop: 20 }}>
-                <Link href="/about" className="btn btn-ghost">
-                  More about Great Path
-                </Link>
-              </div>
-            </div>
+          <div className="eyebrow">Questions</div>
+          <h2 style={{ marginTop: 8 }}>What owners usually ask</h2>
+          <div className="stack-lg" style={{ marginTop: 26 }}>
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--line)",
+                  borderRadius: "var(--radius-sm)",
+                  padding: "16px 18px",
+                }}
+              >
+                <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 16 }}>
+                  {f.q}
+                </summary>
+                <p style={{ marginTop: 10, color: "var(--muted)" }}>{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 10 — FINAL CTA ---------------------------------------------------- */}
+      {/* 13 — FINAL CTA ---------------------------------------------------- */}
       <section className="band-dark">
         <div className="wrap narrow" style={{ textAlign: "center" }}>
-          <h2>Pick a Path. Set the destination. Start moving.</h2>
+          <h2>Ready to see your numbers work for you?</h2>
           <p className="lead" style={{ marginTop: 14 }}>
-            One call to see whether this fits your business. No deck, no pitch.
+            Book a free 30-minute discovery call. We'll show you the insight hiding in your
+            business — and the first moves to grow it.
           </p>
-          <div
-            className="btn-row"
-            style={{ marginTop: 26, justifyContent: "center" }}
-          >
-            <Link href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
-              Book a Call
-            </Link>
+          <div className="btn-row" style={{ marginTop: 26, justifyContent: "center" }}>
+            <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
+              Book my free discovery call
+            </a>
           </div>
+          <p className="small" style={{ marginTop: 14, color: "var(--on-dark-muted)" }}>
+            No pitch deck. No obligation. Just a clear look at where your data can take you.
+          </p>
         </div>
       </section>
     </>
