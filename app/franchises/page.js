@@ -1,72 +1,281 @@
 import Link from "next/link";
-import { BRAND } from "@/lib/brand";
+import { BRAND, FRANCHISE } from "@/lib/brand";
+import Icon from "@/components/Icon";
+
+const F = FRANCHISE;
 
 export const metadata = {
   title: "Franchises & Multi-Unit",
-  description:
-    "Every unit. One system. Firing in unison. One branded executive brief across every location.",
+  description: F.hero.sub,
 };
 
-export default function Page() {
+export default function Franchises() {
   return (
     <>
+      {/* hero */}
       <section className="band-dark">
         <div className="wrap narrow">
           <div className="eyebrow" style={{ color: "var(--gold)" }}>
-            For franchise systems &amp; multi-unit operators
+            {F.hero.eyebrow}
           </div>
-          <h1 style={{ marginTop: 12 }}>Every unit. One system. Firing in unison.</h1>
+          <h1 style={{ marginTop: 12 }}>{F.hero.headline}</h1>
           <p className="lead" style={{ marginTop: 16 }}>
-            Franchise ownership multiplies complexity — different accountants, different software,
-            blind spots between locations. Great Path turns the scattered numbers across your units
-            into one branded executive brief, so the whole system can see what&apos;s working and
-            move together.
+            {F.hero.sub}
           </p>
           <div className="btn-row" style={{ marginTop: 26 }}>
-            <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">Book a franchise demo</a>
+            <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
+              {F.cta.button}
+            </a>
+            <a href="#models" className="btn btn-ghost-light btn-lg">
+              See how it works
+            </a>
           </div>
-          <p className="small" style={{ marginTop: 14, color: "var(--on-dark-muted)" }}>
-            Set-up fee + simple per-unit pricing · White-label to your brand · Works with the
-            accounting each unit already uses
+          <p className="small" style={{ marginTop: 18, color: "var(--on-dark-muted)" }}>
+            {F.hero.note}
           </p>
         </div>
       </section>
 
+      {/* the problem */}
+      <section className="band-cool">
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{F.problem.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{F.problem.headline}</h2>
+            <p>{F.problem.sub}</p>
+          </div>
+          <div className="grid cols-3">
+            {F.problem.cards.map((c) => (
+              <div className="card" key={c.title}>
+                <div className={`ico ${c.accent}`} style={{ marginBottom: 12 }}>
+                  <Icon name={c.icon} size={22} />
+                </div>
+                <h3>{c.title}</h3>
+                <p style={{ marginTop: 8 }}>{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* two audiences */}
       <section>
         <div className="wrap">
           <div className="section-head">
-            <div className="eyebrow">Two ways to partner</div>
-            <h2 style={{ marginTop: 8 }}>Pick the model that fits your system.</h2>
+            <div className="eyebrow">{F.audiences.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{F.audiences.headline}</h2>
+            <p>{F.audiences.sub}</p>
           </div>
+
           <div className="grid cols-2">
-            <div className="card">
-              <span className="badge">Path 1 · Advisor Program</span>
-              <h3 style={{ marginTop: 10 }}>Great Path as your official advisor</h3>
-              <p style={{ marginTop: 8 }}>
-                We become your system&apos;s named advisor. Your franchisees work with us directly
-                under custom rate structures and discounted setup fees you secure for them — a
-                genuine benefit you provide, with none of the overhead.
-              </p>
-            </div>
-            <div className="card">
-              <span className="badge">Path 2 · White-label</span>
-              <h3 style={{ marginTop: 10 }}>Your brand, our engine</h3>
-              <p style={{ marginTop: 8 }}>
-                Premium executive briefings — from a single unit up to a full system view — under
-                your own brand. Give it to owners as a benefit or bundle it into your tech package.
-              </p>
-            </div>
+            {F.audiences.cols.map((c) => (
+              <div className="card" key={c.label}>
+                <span className="tag">{c.label}</span>
+                <h3 style={{ marginTop: 6 }}>{c.title}</h3>
+                <p style={{ marginTop: 8 }}>{c.sub}</p>
+                <ul className="fit-list fit-yes" style={{ marginTop: 14 }}>
+                  {c.points.map((pt) => (
+                    <li key={pt} style={{ fontSize: 15 }}>
+                      <span className="mk">
+                        <Icon name="check" size={16} />
+                      </span>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* two models */}
+      <section id="models" className="band-navy" style={{ scrollMarginTop: 80 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{F.models.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{F.models.headline}</h2>
+            <p>{F.models.sub}</p>
           </div>
 
-          <div className="placeholder" style={{ marginTop: 24 }}>
-            Full page still to be rebuilt from the Squarespace version: the three problem cards,
-            the two-audience split, why it compounds, the beyond-monthly section, and the two live
-            samples (/franchiseoperator and /franchisebrief).
+          <div className="grid cols-2">
+            {F.models.cards.map((c) => (
+              <div className="card" key={c.title}>
+                <span
+                  style={{
+                    display: "inline-block",
+                    background: "rgba(199,166,90,.2)",
+                    color: "var(--gold)",
+                    fontSize: 11.5,
+                    fontWeight: 700,
+                    letterSpacing: ".06em",
+                    textTransform: "uppercase",
+                    padding: "5px 10px",
+                    borderRadius: 999,
+                  }}
+                >
+                  {c.badge}
+                </span>
+                <h3 style={{ marginTop: 12 }}>{c.title}</h3>
+                <p style={{ marginTop: 10 }}>{c.body}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="btn-row" style={{ marginTop: 24 }}>
-            <a href={BRAND.bookingUrl} className="btn btn-primary">Book a franchise demo</a>
-            <Link href="/contact" className="btn btn-ghost">Ask a question</Link>
+          <p
+            style={{
+              marginTop: 22,
+              padding: "14px 18px",
+              background: "rgba(199,166,90,.14)",
+              borderLeft: "3px solid var(--gold)",
+              borderRadius: 8,
+              fontSize: 14.5,
+              color: "var(--on-dark)",
+            }}
+          >
+            {F.models.sampleNote}
+          </p>
+        </div>
+      </section>
+
+      {/* why it compounds */}
+      <section>
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{F.compounds.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{F.compounds.headline}</h2>
+            <p>{F.compounds.sub}</p>
+          </div>
+          <div className="grid cols-3">
+            {F.compounds.cards.map((c, i) => (
+              <div
+                className="card path-card"
+                key={c.title}
+                style={{ "--accent": `var(--${c.accent})` }}
+              >
+                <span
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 800,
+                    letterSpacing: ".1em",
+                    color: "var(--gold-deep)",
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 style={{ marginTop: 8 }}>{c.title}</h3>
+                <p style={{ marginTop: 8 }}>{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* beyond the monthly numbers */}
+      <section className="band-warm">
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{F.beyond.eyebrow}</div>
+            <h2 style={{ marginTop: 8 }}>{F.beyond.headline}</h2>
+            <p>{F.beyond.sub}</p>
+          </div>
+          <div className="grid cols-3">
+            {F.beyond.cards.map((c) => (
+              <div className="card" key={c.title}>
+                <div className={`ico ${c.accent}`} style={{ marginBottom: 12 }}>
+                  <Icon name={c.icon} size={22} />
+                </div>
+                <h3>{c.title}</h3>
+                <p style={{ marginTop: 8 }}>{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* white-label */}
+      <section className="band-navy">
+        <div className="wrap narrow">
+          <div className="eyebrow">{F.whiteLabel.eyebrow}</div>
+          <h2 style={{ marginTop: 8 }}>{F.whiteLabel.headline}</h2>
+          <p className="lead" style={{ marginTop: 16 }}>
+            {F.whiteLabel.body}
+          </p>
+
+          {/* the visual point: their brand on top, ours nowhere */}
+          <div
+            style={{
+              marginTop: 28,
+              background: "#fff",
+              borderRadius: 14,
+              overflow: "hidden",
+              maxWidth: 420,
+            }}
+          >
+            <div
+              style={{
+                background: "var(--card-alt)",
+                padding: "18px 20px",
+                borderBottom: "3px solid var(--gold)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 11.5,
+                  fontWeight: 800,
+                  letterSpacing: ".16em",
+                  color: "var(--muted)",
+                }}
+              >
+                YOUR BRAND
+              </div>
+              <div
+                style={{
+                  fontSize: 20,
+                  fontWeight: 800,
+                  color: "var(--navy-ink)",
+                  marginTop: 4,
+                  letterSpacing: "-.02em",
+                }}
+              >
+                Owner Briefing
+              </div>
+            </div>
+            <div style={{ padding: "18px 20px" }}>
+              <div style={{ height: 8, borderRadius: 4, background: "var(--card-alt)", width: "85%" }} />
+              <div style={{ height: 8, borderRadius: 4, background: "var(--card-alt)", width: "60%", marginTop: 9 }} />
+              <div style={{ height: 8, borderRadius: 4, background: "var(--card-alt)", width: "72%", marginTop: 9 }} />
+              <div
+                style={{
+                  marginTop: 16,
+                  paddingTop: 14,
+                  borderTop: "1px solid var(--line)",
+                  fontSize: 11.5,
+                  color: "var(--muted)",
+                  fontStyle: "italic",
+                }}
+              >
+                Great Path stays behind the curtain.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="band-dark">
+        <div className="wrap narrow" style={{ textAlign: "center" }}>
+          <h2>{F.cta.headline}</h2>
+          <p className="lead" style={{ marginTop: 14 }}>
+            {F.cta.sub}
+          </p>
+          <div className="btn-row" style={{ marginTop: 26, justifyContent: "center" }}>
+            <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
+              {F.cta.button}
+            </a>
+            <Link href="/examples" className="btn btn-ghost-light">
+              See an example briefing
+            </Link>
           </div>
         </div>
       </section>
