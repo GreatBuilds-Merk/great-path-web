@@ -16,6 +16,7 @@ const D = {
   road: "M4 21L9 3M20 21L15 3M12 6v3M12 12v3M12 18v2",
   file: "M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5zM14 3v5h5",
   play: "M8 5l11 7-11 7V5z",
+  bolt: "M13 3L5 14h6l-1 7 8-11h-6l1-7z",
 };
 
 export default function Icon({ name, size = 20, stroke = 2, className = "", fill = "none" }) {

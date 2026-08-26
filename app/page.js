@@ -9,7 +9,7 @@ import {
   PATHS,
   WHAT_CHANGES,
   PROOF,
-  PRICING,
+  TIERS,
   FAQ,
   FOUNDER,
 } from "@/lib/brand";
@@ -337,35 +337,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10 — PRICING TEASER ----------------------------------------------- */}
+      {/* 10 — PRICING TEASER -----------------------------------------------
+          No numbers here on purpose. Pricing is quoted privately — the /pricing
+          page exists but is unlinked. See the NOTE above NAV in lib/brand.js. */}
       <section className="band-alt">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">Pricing</div>
-            <h2 style={{ marginTop: 8 }}>Set up once. Then it's a monthly rhythm.</h2>
+            <h2 style={{ marginTop: 8 }}>Priced to the size of your business.</h2>
+            <p>
+              Fortune 500 technology and insight, at small business pricing. Your rate is set from
+              your revenue — so as we help you grow, your price never spikes.
+            </p>
           </div>
-          <div className="grid cols-4">
-            {PRICING.map((t) => (
+
+          <div className="grid cols-3">
+            {TIERS.map((t) => (
               <div className={`card price-card${t.highlight ? " featured" : ""}`} key={t.id}>
+                {t.highlight && (
+                  <span className="badge" style={{ marginBottom: 10 }}>
+                    Flagship
+                  </span>
+                )}
                 <h3>{t.name}</h3>
-                <div className="price" style={{ margin: "12px 0 6px" }}>
-                  {t.price === null ? (
-                    "Quoted"
-                  ) : (
-                    <>
-                      ${t.price}
-                      <small> /{t.cadence === "month" ? "mo" : "one-time"}</small>
-                    </>
-                  )}
-                </div>
+                <p className="small" style={{ marginTop: 4, marginBottom: 10 }}>
+                  {t.tagline}
+                </p>
                 <p style={{ fontSize: 14.5 }}>{t.summary}</p>
               </div>
             ))}
           </div>
+
           <div className="btn-row" style={{ marginTop: 24 }}>
-            <Link href="/pricing" className="btn btn-primary">
-              See what's included
-            </Link>
+            <a href={BRAND.bookingUrl} className="btn btn-primary">
+              Book a call for your exact number
+            </a>
           </div>
         </div>
       </section>

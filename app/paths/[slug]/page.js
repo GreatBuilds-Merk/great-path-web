@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PATHS, getPath, getTier, HOW_IT_WORKS, BRAND } from "@/lib/brand";
+import { PATHS, getPath, HOW_IT_WORKS, BRAND } from "@/lib/brand";
 import Icon from "@/components/Icon";
 
 // Pre-render all six Path pages at build time.
@@ -18,8 +18,6 @@ export default function PathPage({ params }) {
   const p = getPath(params.slug);
   if (!p) notFound();
 
-  const tier = getTier(p.tier);
-  const isAdvisory = p.tier === "advisory";
 
   return (
     <>
@@ -37,9 +35,9 @@ export default function PathPage({ params }) {
             <p style={{ marginTop: 14, color: "var(--gold)", fontWeight: 600 }}>{p.note}</p>
           )}
           <div className="btn-row" style={{ marginTop: 26 }}>
-            <Link href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
+            <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
               Book a Call
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -122,37 +120,20 @@ export default function PathPage({ params }) {
         </div>
       </section>
 
-      {/* pricing */}
+      {/* pricing — no numbers; pricing is quoted privately */}
       <section>
         <div className="wrap narrow">
           <div className="eyebrow">What it costs</div>
-          {isAdvisory ? (
-            <>
-              <h2 style={{ marginTop: 8 }}>Scoped and quoted per engagement.</h2>
-              <p style={{ marginTop: 12, color: "var(--muted)" }}>
-                This Path is run with you directly rather than through the monthly product, so the
-                shape of the work changes with the business. We'll scope it on a call.
-              </p>
-            </>
-          ) : (
-            <>
-              <h2 style={{ marginTop: 8 }}>
-                ${getTier("setup").price} to set up, then ${tier?.price}/month.
-              </h2>
-              <p style={{ marginTop: 12, color: "var(--muted)" }}>
-                Setup is the working session where we choose your destination, set your targets,
-                and map your data. After that it's {tier?.name} — send your numbers, get your
-                briefing.
-              </p>
-            </>
-          )}
+          <h2 style={{ marginTop: 8 }}>
+            {p.tier === "free"
+              ? "Free to start."
+              : "Priced to the size of your business."}
+          </h2>
+          <p style={{ marginTop: 12, color: "var(--muted)" }}>{p.pricingNote}</p>
           <div className="btn-row" style={{ marginTop: 22 }}>
-            <Link href="/pricing" className="btn btn-ghost">
-              See full pricing
-            </Link>
-            <Link href={BRAND.bookingUrl} className="btn btn-primary">
+            <a href={BRAND.bookingUrl} className="btn btn-primary">
               Book a Call
-            </Link>
+            </a>
           </div>
         </div>
       </section>
