@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Briefing — D.C. Clark Custom Homes & Contracting</title>
+<style>
+  /* ============================================================
+     DESIGN TOKENS  — change these to re-skin the whole briefing
+     ============================================================ */
+  :root{
+    --navy:#1C2E52;
+    --navy-2:#24386a;
+    --gold:#C08A2D;
+    --gold-soft:#f6ecd9;
+    --slate:#8A9BB5;
+    --slate-light:#aab8cd;
+    --green:#3FA24A;
+    --red:#C0392B;
+    --ink:#1f2733;
+    --muted:#6b7686;
+    --card:#F0F1F3;
+    --card-2:#f6f7f9;
+    --line:#e2e5ea;
+    --page:#ffffff;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#4a4a4a;font-family:var(--font);color:var(--ink);padding:24px;-webkit-font-smoothing:antialiased;}
+
+  /* ---------- Page frame ---------- */
+  .page{
+    width:816px;min-height:1056px;background:var(--page);margin:0 auto 32px;
+    position:relative;display:flex;flex-direction:column;
+    box-shadow:0 8px 30px rgba(0,0,0,.35);overflow:hidden;
+  }
+  .page-body{flex:1;padding:30px 40px 20px;}
+
+  /* ---------- Header ---------- */
+  .hdr{display:flex;justify-content:space-between;align-items:flex-start;padding:34px 40px 0;}
+  .hdr-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--navy);line-height:.95;}
+  .hdr-sub{font-size:19px;font-weight:700;color:var(--gold);margin-top:6px;}
+  .hdr-prep{font-size:13px;color:var(--muted);margin-top:5px;}
+  .hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:14px;}
+  .date-badge{
+    background:var(--navy);color:#fff;font-size:13px;font-weight:600;
+    padding:8px 16px 8px 26px;position:relative;
+    clip-path:polygon(14px 0,100% 0,100% 100%,0 100%);
+  }
+  .rule{height:3px;background:var(--gold);margin:22px 40px 0;border-radius:2px;}
+  .rule.thin{height:2px;background:var(--line);}
+
+  /* ---------- Logo ---------- */
+  .logo{display:flex;align-items:center;gap:9px;}
+  .logo svg{display:block;}
+  .logo-txt{line-height:1;}
+  .logo-txt .l1{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:1px;}
+  .logo-txt .l1 .amp{color:var(--red);}
+  .logo-txt .l2{font-size:8.5px;font-weight:700;color:var(--slate);letter-spacing:1.8px;margin-top:3px;}
+
+  /* ---------- Section title ---------- */
+  .sec{display:flex;align-items:center;gap:12px;margin:22px 0 14px;}
+  .sec .badge{width:38px;height:38px;border-radius:50%;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .sec.gold .badge{background:var(--gold);}
+  .sec .badge svg{width:20px;height:20px;}
+  .sec h2{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:.3px;}
+
+  /* ---------- Layout ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+
+  /* ---------- Goal cards ---------- */
+  .goal{background:var(--card);border-radius:10px;padding:14px 16px;display:flex;gap:14px;margin-bottom:12px;}
+  .goal .num{width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;
+    font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .goal h3{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:3px;}
+  .goal p{font-size:12.5px;line-height:1.45;color:var(--muted);}
+
+  /* ---------- KPI cards ---------- */
+  .kpi{background:var(--card);border-radius:10px;padding:14px 16px;display:grid;
+    grid-template-columns:46px 1fr auto;gap:14px;align-items:center;margin-bottom:12px;}
+  .kpi .ic{width:46px;height:46px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+  .kpi .ic svg{width:24px;height:24px;}
+  .kpi .lbl{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.6px;text-transform:uppercase;}
+  .kpi .val{font-size:27px;font-weight:800;color:var(--navy);line-height:1.05;margin-top:2px;}
+  .kpi .delta{text-align:right;}
+  .kpi .delta .big{font-size:16px;font-weight:800;}
+  .kpi .delta .cmp{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.35;}
+  .up{color:var(--green);}.down{color:var(--green);} /* both directions shown as positive-good in green per source */
+
+  /* ---------- Chart wrap ---------- */
+  .chart-card{background:var(--card-2);border:1px solid var(--line);border-radius:10px;padding:16px 14px 8px;}
+  .legend{display:flex;gap:22px;justify-content:center;margin-bottom:6px;font-size:12px;font-weight:600;color:var(--ink);}
+  .legend span{display:flex;align-items:center;gap:7px;}
+  .legend i{width:22px;height:3px;border-radius:2px;display:inline-block;}
+  .legend i.dot{width:9px;height:9px;border-radius:50%;}
+
+  /* ---------- Callout ---------- */
+  .callout{background:var(--card);border-radius:10px;padding:16px 18px;display:flex;gap:16px;align-items:flex-start;margin-top:18px;}
+  .callout .badge{width:44px;height:44px;border-radius:50%;background:var(--navy);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;}
+  .callout .badge svg{width:24px;height:24px;}
+  .callout .ttl{font-size:13px;font-weight:800;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;line-height:1.2;width:80px;flex-shrink:0;}
+  .callout p{font-size:12.5px;line-height:1.55;color:var(--ink);}
+  .callout.wide .ttl{display:flex;align-items:center;}
+
+  /* ---------- Takeaways / insights ---------- */
+  .item{display:flex;gap:13px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .item:last-child{border-bottom:none;}
+  .item .ic{width:34px;height:34px;border-radius:50%;background:var(--navy);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;}
+  .item.gold .ic{background:var(--gold);}
+  .item .ic svg{width:18px;height:18px;}
+  .item h4{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:2px;}
+  .item p{font-size:12px;line-height:1.45;color:var(--muted);}
+  .panel{background:var(--card);border-radius:10px;padding:6px 16px;}
+
+  /* ---------- Mini bar rows ---------- */
+  .bar-block{margin-bottom:6px;}
+  .bar-block .bhd{display:flex;align-items:center;gap:9px;margin-bottom:2px;}
+  .bar-block .bhd .ic{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .bar-block .bhd .ic svg{width:14px;height:14px;}
+  .bar-block .bhd h4{font-size:12.5px;font-weight:800;color:var(--navy);letter-spacing:.3px;}
+  .bar-row{display:grid;grid-template-columns:1fr 120px;gap:12px;align-items:center;}
+  .bar-note{font-size:11px;line-height:1.4;color:var(--muted);}
+
+  /* ---------- Actions ---------- */
+  .action{background:var(--card);border-radius:10px;padding:13px 15px;display:flex;gap:13px;margin-bottom:11px;}
+  .action .num{font-size:30px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;width:26px;}
+  .action h4{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;}
+  .action ul{list-style:none;margin:0 0 7px;}
+  .action li{font-size:12px;color:var(--muted);line-height:1.4;padding-left:12px;position:relative;margin-bottom:2px;}
+  .action li:before{content:"•";position:absolute;left:0;color:var(--gold);font-weight:800;}
+  .action .step{font-size:11.5px;line-height:1.4;background:var(--card-2);border-left:3px solid var(--gold);
+    padding:6px 9px;border-radius:0 5px 5px 0;color:var(--ink);}
+  .action .step b{color:var(--navy);}
+
+  /* ---------- Footer ---------- */
+  .ftr{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;
+    padding:12px 40px;font-size:12px;font-weight:600;letter-spacing:.4px;margin-top:16px;}
+  .ftr .tag b{color:var(--gold);}
+  .ftr .pg{background:var(--gold);color:#fff;font-weight:700;padding:6px 18px 6px 26px;
+    clip-path:polygon(14px 0,100% 0,100% 100%,0 100%);margin-right:-40px;}
+
+  @media print{body{background:#fff;padding:0;}.page{box-shadow:none;margin:0;}.page+.page{page-break-before:always;}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* ================================================================
+   DATA  — the single source that drives both pages.
+   Swap this object to regenerate the briefing for any client.
+   ================================================================ */
+const DATA = {
+  company:{ name:"D.C. Clark Custom Homes & Contracting", short:"D.C. Clark Custom Homes" },
+  report:{
+    title:"OWNER BRIEFING",
+    period:"June 2026 Performance Report",
+    preparedFor:"Prepared for D.C. Clark Custom Homes & Contracting",
+    date:"July 15, 2026",
+    tagline:["AI ","WHERE IT HELPS, ","HUMAN"," WHERE IT MATTERS."] // parts 1&3 gold
+  },
+
+  months:["JAN 2026","FEB 2026","MAR 2026","APR 2026","MAY 2026","JUN 2026"],
+  monthsShort:["JAN","FEB","MAR","APR","MAY","JUN"],
+  series:{
+    revenue:     [210000,245000,268000,255000,290000,312000], // ~$3.2M annual pace
+    costSqFt:    [172,168,165,167,160,156],                    // $/sq ft — trending down
+    grossMargin: [19.4,20.6,21.8,21.2,22.9,24.8]               // % — trending up
+  },
+
+  goals:[
+    {t:"PROFITABLE GROWTH", d:"Grow revenue past $3M while protecting gross margin on every build and remodel."},
+    {t:"COST PRECISION", d:"Segment material, labor, and overhead on every project so bids are accurate and margin is protected."},
+    {t:"CREW & PIPELINE PLANNING", d:"Match crews and materials to the build schedule, and keep the lead pipeline full and followed up."}
+  ],
+
+  kpis:[
+    {icon:"bar", label:"REVENUE", value:"$312,000", delta:"7.6%", dir:"up",
+     m:"vs. May 2026", y:"11.4% vs. Jun 2025"},
+    {icon:"coins", label:"GROSS MARGIN", value:"24.8%", delta:"1.9 pts", dir:"up",
+     m:"vs. May 2026", y:"3.6 pts vs. Jun 2025"},
+    {icon:"ruler", label:"COST / SQ FT", value:"$156", delta:"2.5%", dir:"down",
+     m:"vs. May 2026", y:"12.4% vs. Jun 2025"}
+  ],
+
+  highlight:"Revenue reached $312K in June, up 7.6% from May and 11.4% year-over-year — the strongest month of 2026. Gross margin expanded to 24.8% as tighter cost segmentation and lower material waste took hold. Cost per square foot fell again, reflecting sharper bidding and better crew and material planning. With a full pipeline heading into Q3, the focus now is protecting margin as build volume grows.",
+
+  takeaways:[
+    {icon:"trend", t:"Strong Revenue Momentum", d:"Revenue grew 7.6% in June to $312K, the best month of the year, as two custom builds and a kitchen remodel hit billing milestones."},
+    {icon:"coins", t:"Margin Is Expanding", d:"Gross margin climbed to 24.8%, up 1.9 pts from May. Segmenting material, labor, and overhead on each project is showing exactly where margin is won or lost."},
+    {icon:"bin", t:"Waste Is Coming Down", d:"Material waste fell to 4.1% of spend, down from 6.8% in January. Better takeoffs and crew planning mean fewer reorders and less scrap on site."}
+  ],
+
+  comparisons:[
+    {icon:"bar", key:"revenue", title:"REVENUE (MONTHLY)", fmt:"k",
+     note:"June was the highest revenue month of 2026 year-to-date."},
+    {icon:"ruler", key:"costSqFt", title:"COST PER SQUARE FOOT", fmt:"money",
+     note:"Down $16/sq ft since January — tighter bids and less waste."},
+    {icon:"coins", key:"grossMargin", title:"GROSS MARGIN %", fmt:"pct",
+     note:"Up 5.4 pts since January as cost segmentation took hold."}
+  ],
+
+  insights:[
+    {icon:"calc", t:"Cost Segmentation Is Paying Off", d:"Breaking every project into material, labor, and overhead shows where margin actually comes from. Materials are running ~44% of revenue and labor ~26%—watch both by project type."},
+    {icon:"hammer", t:"Crew & Material Planning Is Working", d:"Weekly planning is cutting downtime and rush orders. Right-sized crews and staged deliveries keep builds moving and waste low."},
+    {icon:"bin", t:"Waste Is Real Money", d:"Trimming waste from 6.8% to 4.1% added margin without raising a single price. Protect this—tight takeoffs and material staging are the levers."},
+    {icon:"leads", t:"Your Lead Follow-Up Is Leaking Revenue", d:"Custom-home leads go cold without fast, consistent follow-up. Automating first response and nurture on every inquiry turns more estimates into signed contracts."}
+  ],
+
+  actions:[
+    {t:"Bid With Full Cost Segmentation",
+     bullets:["Break every estimate into material, labor, overhead, and a waste allowance.","Compare bid vs. actual on recent jobs to sharpen the next one."],
+     step:"Pull your last 3 completed projects and calculate true material, labor, and overhead cost per project this week."},
+    {t:"Plan Crews & Materials to the Schedule",
+     bullets:["Match crew size to each phase; stage material deliveries to the build calendar.","Fewer rush orders and less on-site waste."],
+     step:"Hold a Friday planning huddle to lock crews and material drops for the next two weeks."},
+    {t:"Automate Lead Follow-Up",
+     bullets:["Put every new inquiry into an automatic follow-up sequence—text, email, and a callback reminder.","Never let an estimate request sit more than an hour."],
+     step:"Set up an auto-response plus a 5-touch follow-up for new leads so no contact slips through the cracks."}
+  ],
+
+  closing:"You're building the right way—growing revenue, protecting margin, and cutting waste. Keep segmenting your costs, planning crews and materials to the schedule, and following up fast on every lead. Do that, and the profit follows."
+};
+
+/* ================================================================
+   ICONS (inline SVG, currentColor)
+   ================================================================ */
+const I = {
+  target:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="#fff"/></svg>',
+  bar:'<svg viewBox="0 0 24 24" fill="#fff"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>',
+  ticket:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M4 6h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4V6z"/><text x="12" y="15" font-size="9" font-weight="800" fill="#C08A2D" text-anchor="middle" font-family="Arial">$</text></svg>',
+  people:'<svg viewBox="0 0 24 24" fill="#fff"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14 14.5c3 .3 6 2.6 6 5.5"/></svg>',
+  trend:'<svg viewBox="0 0 24 24" fill="none" stroke="#C08A2D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="#C08A2D"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>',
+  lightbulb:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M9 21h6v-1.5H9V21zm3-19a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 11l3 3 5-6"/></svg>',
+  trophy:'<svg viewBox="0 0 24 24" fill="#C08A2D"><path d="M7 4h10v3a5 5 0 01-10 0V4zM5 5H3v2a3 3 0 003 3M19 5h2v2a3 3 0 01-3 3M10 13h4v3h-4zM8 20h8v-2H8z"/></svg>',
+  coins:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.6v10.8" stroke-linecap="round"/><path d="M14.6 9.1c0-1.1-1.2-1.7-2.6-1.7s-2.6.7-2.6 1.8 1.2 1.6 2.6 1.9 2.6.8 2.6 1.9-1.2 1.7-2.6 1.7-2.6-.7-2.6-1.8" stroke-linecap="round"/></svg>',
+  ruler:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="8.5" width="19" height="7" rx="1.2"/><path d="M6.5 8.5v3M10 8.5v4M13.5 8.5v3M17 8.5v4" stroke-linecap="round"/></svg>',
+  house:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3.5 11L12 4.5 20.5 11"/><path d="M6 9.5V19h12V9.5"/><path d="M10 19v-4.5h4V19" stroke-linecap="round"/></svg>',
+  hammer:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 5.5l5 5-2.2 2.2-5-5z"/><path d="M11.3 7.7L4 15v0l3 3 7.3-7.3"/></svg>',
+  bin:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4.5h6V7M6.5 7l1 12.5h9L17.5 7"/><path d="M10 11v5M14 11v5"/></svg>',
+  leads:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5v3l11 4V6.5z"/><path d="M14 8.5c2.2 1 2.2 6 0 7" stroke-linecap="round"/><path d="M6 14v3.2l3 1.1V15" stroke-linecap="round"/></svg>',
+  calc:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8"/><path d="M8.5 11.5h0M12 11.5h0M15.5 11.5h0M8.5 15.5h0M12 15.5h0M15.5 15.5h0"/></svg>'
+};
+
+/* ================================================================
+   LOGO  (fake HVAC wordmark — navy + red, mountain/air mark)
+   ================================================================ */
+function logo(){
+  return `<div class="logo">
+    <svg width="54" height="48" viewBox="0 0 54 48">
+      <path d="M27 5 L49 22 L44 22 L44 40 L10 40 L10 22 L5 22 Z" fill="#1C2E52"/>
+      <path d="M27 5 L49 22 L44 22 L27 9 Z" fill="#C08A2D"/>
+      <rect x="22" y="27" width="10" height="13" fill="#C08A2D"/>
+      <rect x="14" y="25" width="6" height="6" fill="#fff" opacity="0.9"/>
+      <rect x="34" y="25" width="6" height="6" fill="#fff" opacity="0.9"/>
+    </svg>
+    <div class="logo-txt">
+      <div class="l1">D.C. <span class="amp">CLARK</span></div>
+      <div class="l2">CUSTOM&nbsp;HOMES&nbsp;&amp;&nbsp;CONTRACTING</div>
+    </div>
+  </div>`;
+}
+
+/* ================================================================
+   FORMAT HELPERS
+   ================================================================ */
+const fmtK   = v => "$"+Math.round(v/1000)+"K";
+const fmtM   = v => "$"+v.toLocaleString();
+const fmtP   = v => v.toFixed(1)+"%";
+function fmtBy(type,v){return type==="k"?fmtK(v):type==="money"?fmtM(v):fmtP(v);}
+
+/* ================================================================
+   LINE CHART  (Page 1 trend — three independent scales)
+   NOTE: kept as multi-axis to match the source design. A single-axis
+   / indexed version is the dataviz-preferred alternative if desired.
+   ================================================================ */
+function lineChart(){
+  const W=760,H=360, L=60,R=162,T=30,B=44;
+  const pw=W-L-R, ph=H-T-B;
+  const m=DATA.months.length;
+  const x=i=>L+ (pw*(i/(m-1)));
+  const scale=(v,mn,mx)=>T+ph-((v-mn)/(mx-mn))*ph;
+  const rev=DATA.series.revenue, cs=DATA.series.costSqFt, gm=DATA.series.grossMargin;
+  const yRev=v=>scale(v,0,350000), yCs=v=>scale(v,120,220), yGm=v=>scale(v,10,35);
+
+  const path=(arr,yf)=>arr.map((v,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+yf(v).toFixed(1)).join(" ");
+  const pts=(arr,yf,c)=>arr.map((v,i)=>`<circle cx="${x(i).toFixed(1)}" cy="${yf(v).toFixed(1)}" r="4.5" fill="${c}" stroke="#fff" stroke-width="1.6"/>`).join("");
+
+  // gridlines (revenue axis reference)
+  let grid="";
+  for(let g=0;g<=350000;g+=50000){const y=yRev(g);grid+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#e6e9ee" stroke-width="1"/><text x="${L-10}" y="${y+4}" font-size="10" fill="#8a93a3" text-anchor="end">$${g/1000}K</text>`;}
+  // right axis: cost per sq ft
+  let axCs="";[120,140,160,180,200,220].forEach(v=>{const y=yCs(v);axCs+=`<text x="${W-R+22}" y="${y+4}" font-size="10" fill="#C08A2D" text-anchor="start">$${v}</text>`;});
+  // far-right axis: gross margin
+  let axGm="";[10,15,20,25,30,35].forEach(v=>{const y=yGm(v);axGm+=`<text x="${W-12}" y="${y+4}" font-size="10" fill="#8A9BB5" text-anchor="end">${v}%</text>`;});
+  // axis captions
+  const cap=`<text x="${W-R+22}" y="${T-12}" font-size="8.5" font-weight="700" fill="#C08A2D">COST/SQ FT</text>`+
+            `<text x="${W-12}" y="${T-12}" font-size="8.5" font-weight="700" fill="#8A9BB5" text-anchor="end">GROSS MARGIN</text>`;
+  // x labels
+  let xl="";DATA.months.forEach((mo,i)=>{xl+=`<text x="${x(i)}" y="${H-14}" font-size="10" font-weight="700" fill="#5a6474" text-anchor="middle">${mo}</text>`;});
+
+  // revenue labels (always above — no conflict up top)
+  const revLbl=rev.map((v,i)=>`<text x="${x(i)}" y="${(yRev(v)-12).toFixed(1)}" font-size="10.5" font-weight="700" fill="#1C2E52" text-anchor="middle">${fmtK(v)}</text>`).join("");
+  // cost/sqft + margin: they cross, so at each month label the higher line above and the lower one below → always diverge
+  let crossLbl="";
+  DATA.months.forEach((m,i)=>{
+    const cy=yCs(cs[i]), gy=yGm(gm[i]);
+    const costAbove = cy<=gy;               // smaller y = higher on screen
+    const cdy = costAbove ? -12 : 17;
+    const gdy = costAbove ? 17 : -12;
+    crossLbl+=`<text x="${x(i)}" y="${(cy+cdy).toFixed(1)}" font-size="10.5" font-weight="700" fill="#C08A2D" text-anchor="middle">$${cs[i]}</text>`;
+    crossLbl+=`<text x="${x(i)}" y="${(gy+gdy).toFixed(1)}" font-size="10.5" font-weight="700" fill="#7d8aa0" text-anchor="middle">${fmtP(gm[i])}</text>`;
+  });
+
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%">
+    ${grid}${axCs}${axGm}${cap}
+    <text x="18" y="${T+ph/2}" font-size="10" font-weight="700" fill="#5a6474" transform="rotate(-90 18 ${T+ph/2})" text-anchor="middle">REVENUE</text>
+    <path d="${path(rev,yRev)}" fill="none" stroke="#1C2E52" stroke-width="2.5"/>
+    <path d="${path(cs,yCs)}" fill="none" stroke="#C08A2D" stroke-width="2.5"/>
+    <path d="${path(gm,yGm)}" fill="none" stroke="#8A9BB5" stroke-width="2.5"/>
+    ${pts(rev,yRev,"#1C2E52")}${pts(cs,yCs,"#C08A2D")}${pts(gm,yGm,"#8A9BB5")}
+    ${revLbl}${crossLbl}
+    ${xl}
+  </svg>`;
+}
+
+/* ================================================================
+   MINI BAR CHART  (Page 2 comparisons)
+   ================================================================ */
+function barChart(key,fmt){
+  const arr=DATA.series[key];
+  const W=340,H=130,T=22,B=20,L=4,R=4;
+  const pw=W-L-R, ph=H-T-B, n=arr.length, gap=10;
+  const bw=(pw-gap*(n-1))/n;
+  const mn=Math.min(...arr), mx=Math.max(...arr);
+  const lo=mn-(mx-mn)*0.6, hi=mx+(mx-mn)*0.15;
+  const y=v=>T+ph-((v-lo)/(hi-lo))*ph;
+  let bars="";
+  arr.forEach((v,i)=>{
+    const bx=L+i*(bw+gap), by=y(v), bh=T+ph-by;
+    const last=i===n-1;
+    bars+=`<rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="3" fill="${last?"#1C2E52":"#9fb0c6"}"/>`;
+    bars+=`<text x="${(bx+bw/2).toFixed(1)}" y="${(by-6).toFixed(1)}" font-size="10" font-weight="800" fill="${last?"#1C2E52":"#5a6474"}" text-anchor="middle">${fmtBy(fmt,v)}</text>`;
+    bars+=`<text x="${(bx+bw/2).toFixed(1)}" y="${H-6}" font-size="9.5" font-weight="600" fill="#8a93a3" text-anchor="middle">${DATA.monthsShort[i]}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%">${bars}</svg>`;
+}
+
+/* ================================================================
+   RENDER
+   ================================================================ */
+function kpiIconBg(icon){return icon==="coins"?"var(--gold)":icon==="ruler"?"var(--slate)":"var(--navy)";}
+
+function header(showDate){
+  return `<div class="hdr">
+    <div>
+      <div class="hdr-title">${DATA.report.title}</div>
+      <div class="hdr-sub">${DATA.report.period}</div>
+      <div class="hdr-prep">${DATA.report.preparedFor}</div>
+    </div>
+    <div class="hdr-right">
+      ${logo()}
+      ${showDate?`<div class="date-badge">📅&nbsp; ${DATA.report.date}</div>`:``}
+    </div>
+  </div>`;
+}
+function footer(pg){
+  const t=DATA.report.tagline;
+  return `<div class="ftr">
+    <div class="tag"><b>${t[0]}</b>${t[1]}<b>${t[2]}</b>${t[3]}</div>
+    <div class="pg">Page ${pg} of 2</div>
+  </div>`;
+}
+
+function page1(){
+  const goals=DATA.goals.map((g,i)=>`
+    <div class="goal"><div class="num">${i+1}</div>
+      <div><h3>${g.t}</h3><p>${g.d}</p></div></div>`).join("");
+
+  const kpis=DATA.kpis.map(k=>`
+    <div class="kpi">
+      <div class="ic" style="background:${kpiIconBg(k.icon)}">${I[k.icon]}</div>
+      <div><div class="lbl">${k.label}</div><div class="val">${k.value}</div></div>
+      <div class="delta">
+        <div class="big up">${k.dir==="up"?"▲":"▼"} ${k.delta}</div>
+        <div class="cmp">${k.m}<br>${k.y}</div>
+      </div>
+    </div>`).join("");
+
+  return `<div class="page">
+    ${header(true)}
+    <div class="rule"></div>
+    <div class="page-body">
+      <div class="cols">
+        <div>
+          <div class="sec"><div class="badge">${I.target}</div><h2>TOP 3 GOALS</h2></div>
+          ${goals}
+        </div>
+        <div>
+          <div class="sec"><div class="badge">${I.bar}</div><h2>MONTHLY KPI SNAPSHOT</h2></div>
+          ${kpis}
+        </div>
+      </div>
+
+      <div class="sec"><div class="badge">${I.trend}</div><h2>KPI TREND OVERVIEW</h2></div>
+      <div class="chart-card">
+        <div class="legend">
+          <span><i style="background:#1C2E52"></i>Revenue (Monthly)</span>
+          <span><i style="background:#C08A2D"></i>Cost per Sq Ft</span>
+          <span><i style="background:#8A9BB5"></i>Gross Margin %</span>
+        </div>
+        ${lineChart()}
+      </div>
+
+      <div class="callout">
+        <div class="badge">${I.star}</div>
+        <div class="ttl">Key<br>Highlight</div>
+        <p>${DATA.highlight}</p>
+      </div>
+    </div>
+    ${footer(1)}
+  </div>`;
+}
+
+function page2(){
+  const takeaways=DATA.takeaways.map(t=>`
+    <div class="item"><div class="ic">${I[t.icon]}</div>
+      <div><h4>${t.t}</h4><p>${t.d}</p></div></div>`).join("");
+
+  const comps=DATA.comparisons.map(c=>`
+    <div class="bar-block">
+      <div class="bhd"><div class="ic" style="background:${kpiIconBg(c.icon)}">${I[c.icon]}</div><h4>${c.title}</h4></div>
+      <div class="bar-row">${barChart(c.key,c.fmt)}<div class="bar-note">${c.note}</div></div>
+    </div>`).join("");
+
+  const insights=DATA.insights.map(n=>`
+    <div class="item gold"><div class="ic">${I[n.icon]}</div>
+      <div><h4>${n.t}</h4><p>${n.d}</p></div></div>`).join("");
+
+  const actions=DATA.actions.map((a,i)=>`
+    <div class="action"><div class="num">${i+1}</div>
+      <div style="flex:1"><h4>${a.t}</h4>
+        <ul>${a.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+        <div class="step"><b>First Step:</b> ${a.step}</div>
+      </div></div>`).join("");
+
+  return `<div class="page">
+    ${header(false)}
+    <div class="rule thin"></div>
+    <div class="page-body">
+      <div class="sec"><div class="badge">${I.bar}</div><h2>DEEP DIVE: MONTH OVER MONTH</h2></div>
+      <div class="cols">
+        <div>
+          <div style="font-size:14px;font-weight:800;color:var(--gold);letter-spacing:.5px;margin-bottom:4px;">KEY TAKEAWAYS</div>
+          <div class="panel">${takeaways}</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:var(--navy);letter-spacing:.3px;margin-bottom:8px;">KPI MONTHLY COMPARISON</div>
+          ${comps}
+        </div>
+      </div>
+
+      <div class="cols" style="margin-top:20px;">
+        <div>
+          <div class="sec gold"><div class="badge">${I.lightbulb}</div><h2>OPERATOR INSIGHTS</h2></div>
+          <div class="panel">${insights}</div>
+        </div>
+        <div>
+          <div class="sec"><div class="badge">${I.target}</div><h2>TOP ACTIONS · NEXT 30 DAYS</h2></div>
+          ${actions}
+        </div>
+      </div>
+
+      <div class="callout wide">
+        <div class="badge">${I.trophy}</div>
+        <div class="ttl">Keep Building Momentum</div>
+        <p>${DATA.closing}</p>
+      </div>
+    </div>
+    ${footer(2)}
+  </div>`;
+}
+
+document.getElementById("app").innerHTML = page1()+page2();
+</script>
+</body>
+</html>

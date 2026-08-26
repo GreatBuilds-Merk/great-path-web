@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import { BRAND } from "@/lib/brand";
 
 export const metadata = {
-  metadataBase: new URL(process.env.SITE_URL || "https://www.greatpathadvisors.com"),
+  // SITE_URL wins in production; BRAND.siteUrl is the single-source fallback.
+  metadataBase: new URL(process.env.SITE_URL || BRAND.siteUrl),
   title: {
     default: `${BRAND.name} — ${BRAND.tagline}`,
     template: `%s · ${BRAND.shortName}`,

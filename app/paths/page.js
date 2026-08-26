@@ -29,8 +29,13 @@ export default function PathsIndex() {
         <div className="wrap">
           <div className="grid cols-3">
             {PATHS.map((p) => (
-              <Link href={`/paths/${p.slug}`} className="card path-card" key={p.slug}>
-                <div className="ico">
+              <Link
+                href={`/paths/${p.slug}`}
+                className="card path-card"
+                key={p.slug}
+                style={{ "--accent": `var(--${p.accent})` }}
+              >
+                <div className={`ico ${p.accent}`}>
                   <Icon name={p.icon} size={22} />
                 </div>
                 <span className="tag">{p.tagline}</span>

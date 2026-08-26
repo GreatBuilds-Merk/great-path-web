@@ -37,6 +37,25 @@
   --on-track: #3f5f86;
   --behind: #b4553c;
 
+  /* --- accent palette -------------------------------------------------------
+     Navy and gold stay the brand. These four are supporting accents, used ONLY
+     on icons, numbers, and small marks — never as page backgrounds. They give
+     the scroll variety without introducing a second brand identity. */
+  --navy-mid: #35547a;
+  --teal: #21785c;
+  --rust: #b4553c;
+  --plum: #5f5391;
+
+  --tint-navy: rgba(63, 95, 134, 0.09);
+  --tint-gold: rgba(199, 166, 90, 0.16);
+  --tint-teal: rgba(33, 120, 92, 0.1);
+  --tint-rust: rgba(180, 85, 60, 0.1);
+  --tint-plum: rgba(95, 83, 145, 0.1);
+
+  /* section wash backgrounds — the scroll rhythm */
+  --band-cool: #edf1f7; /* light navy wash */
+  --band-warm: #fbf5e9; /* light gold wash */
+
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
 
@@ -465,6 +484,94 @@ footer.site a:hover {
   background: var(--card-alt);
 }
 
+/* --- section bands: the scroll rhythm ------------------------------------
+   Order on the home page runs dark → white → cool → white → NAVY → white →
+   warm → NAVY → white → cool → white → cool → dark. Never two of the same
+   band touching. */
+.band-cool {
+  background: var(--band-cool);
+}
+.band-warm {
+  background: var(--band-warm);
+}
+
+/* solid navy — lighter than band-dark, so the two read as different stops */
+.band-navy {
+  background: var(--navy);
+  color: var(--on-dark);
+}
+.band-navy h1,
+.band-navy h2,
+.band-navy h3,
+.band-navy h4 {
+  color: #fff;
+}
+.band-navy p,
+.band-navy .lead {
+  color: rgba(238, 242, 247, 0.82);
+}
+.band-navy .eyebrow {
+  color: var(--gold);
+}
+/* cards sitting on a navy band go translucent rather than white */
+.band-navy .card {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+.band-navy .card p {
+  color: rgba(238, 242, 247, 0.8);
+}
+.band-navy .card .n {
+  color: var(--gold);
+}
+
+/* --- accent icon tiles ---------------------------------------------------- */
+.ico.gold {
+  background: var(--tint-gold);
+  color: var(--gold-deep);
+}
+.ico.teal {
+  background: var(--tint-teal);
+  color: var(--teal);
+}
+.ico.rust {
+  background: var(--tint-rust);
+  color: var(--rust);
+}
+.ico.plum {
+  background: var(--tint-plum);
+  color: var(--plum);
+}
+
+/* path cards get a colored top rule that fills in on hover */
+.path-card {
+  position: relative;
+  overflow: hidden;
+}
+.path-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--accent, var(--navy));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+.path-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* big stat numbers, used on the proof band */
+.stat-num {
+  font-size: clamp(24px, 3.6vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+  line-height: 1.05;
+}
+
 /* --- fit lists (for / not for) ------------------------------------------ */
 .fit-list li {
   display: flex;
@@ -557,4 +664,10 @@ footer.site a:hover {
   color: var(--muted);
   background: var(--card);
   font-size: 14px;
+}
+
+/* default (navy) icon tile, named explicitly so `ico navy` reads intentionally */
+.ico.navy {
+  background: var(--tint-navy);
+  color: var(--navy);
 }

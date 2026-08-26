@@ -1,0 +1,202 @@
+{
+ "company": {
+  "name": "Summit Air Mechanical, Inc.",
+  "short": "Summit Air Mechanical"
+ },
+ "report": {
+  "title": "OWNER BRIEFING",
+  "period": "June 2026 Performance Report",
+  "preparedFor": "Prepared for Summit Air Mechanical, Inc.",
+  "date": "July 15, 2026",
+  "tagline": [
+   "AI ",
+   "WHERE IT HELPS, ",
+   "HUMAN",
+   " WHERE IT MATTERS."
+  ]
+ },
+ "months": [
+  "JAN 2026",
+  "FEB 2026",
+  "MAR 2026",
+  "APR 2026",
+  "MAY 2026",
+  "JUN 2026"
+ ],
+ "monthsShort": [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN"
+ ],
+ "series": {
+  "revenue": [
+   145000,
+   160000,
+   175000,
+   168000,
+   170000,
+   195000
+  ],
+  "avgTicket": [
+   3270,
+   3410,
+   3590,
+   3610,
+   3615,
+   3842
+  ],
+  "laborCostPct": [
+   31.2,
+   30.6,
+   31,
+   29.8,
+   30,
+   28.6
+  ]
+ },
+ "goals": [
+  {
+   "t": "PROFITABLE GROWTH",
+   "d": "Increase annual revenue to $2.2M+ while maintaining strong margins."
+  },
+  {
+   "t": "OPERATIONAL EXCELLENCE",
+   "d": "Improve project execution and reduce rework to drive higher profitability."
+  },
+  {
+   "t": "PEOPLE & CULTURE",
+   "d": "Invest in our team and strengthen retention to support our growth."
+  }
+ ],
+ "kpis": [
+  {
+   "icon": "bar",
+   "label": "REVENUE",
+   "value": "$195,000",
+   "delta": "14.8%",
+   "dir": "up",
+   "m": "vs. May 2026",
+   "y": "9.6% vs. Jun 2025"
+  },
+  {
+   "icon": "ticket",
+   "label": "AVERAGE TICKET PRICE",
+   "value": "$3,842",
+   "delta": "6.3%",
+   "dir": "up",
+   "m": "vs. May 2026",
+   "y": "7.1% vs. Jun 2025"
+  },
+  {
+   "icon": "people",
+   "label": "LABOR COST %",
+   "value": "28.6%",
+   "delta": "1.4 pts",
+   "dir": "down",
+   "m": "vs. May 2026",
+   "y": "2.2 pts vs. Jun 2025"
+  }
+ ],
+ "highlight": "Revenue reached $195K in June, up 14.8% from May and 9.6% year-over-year. Average ticket price continued to climb, reflecting strong project mix and scope expansion. Labor efficiency improved, with labor cost percentage trending down to 28.6%. The business is positioned well heading into Q3 with positive momentum across all key performance drivers.",
+ "takeaways": [
+  {
+   "icon": "trend",
+   "t": "Strong Revenue Momentum",
+   "d": "Revenue grew 14.8% in June, driven by more active projects and strong execution in the field."
+  },
+  {
+   "icon": "ticket",
+   "t": "Higher Ticket Value",
+   "d": "Average ticket price continues to climb, up 6.3% from May. This reflects better scoping, change order management, and added value for clients."
+  },
+  {
+   "icon": "people",
+   "t": "Labor Efficiency Improving",
+   "d": "Labor cost percentage dropped 1.4 pts from May, showing better scheduling and improved productivity on jobs."
+  }
+ ],
+ "comparisons": [
+  {
+   "icon": "bar",
+   "key": "revenue",
+   "title": "REVENUE (MONTHLY)",
+   "fmt": "k",
+   "note": "June was the highest revenue month of 2026 year-to-date."
+  },
+  {
+   "icon": "ticket",
+   "key": "avgTicket",
+   "title": "AVERAGE TICKET PRICE",
+   "fmt": "money",
+   "note": "Up 6.3% from May and 17.5% since January."
+  },
+  {
+   "icon": "people",
+   "key": "laborCostPct",
+   "title": "LABOR COST % OF REVENUE",
+   "fmt": "pct",
+   "note": "Down 1.4 pts from May and 2.6 pts since January."
+  }
+ ],
+ "insights": [
+  {
+   "icon": "check",
+   "t": "The Business Is Firing on All Cylinders",
+   "d": "Revenue, ticket price, and labor efficiency are all moving in the right direction. This combination is what drives profit\u2014keep the foot on the gas."
+  },
+  {
+   "icon": "people",
+   "t": "Your Team Is Getting More Productive",
+   "d": "Lower labor cost % means the team is doing more with less overtime. Keep reinforcing the habits that are working\u2014start times, planning, and staying ahead of the work."
+  },
+  {
+   "icon": "hands",
+   "t": "Pricing Power Is Working",
+   "d": "Clients are accepting higher ticket prices. This is a great sign of trust in your work and the value you're delivering. Don't be afraid to continue holding the line on pricing."
+  },
+  {
+   "icon": "docs",
+   "t": "Backlog Equals Opportunity",
+   "d": "Strong June results position you well for Q3. Keep a close eye on estimating accuracy and project selection to protect margins as volume grows."
+  }
+ ],
+ "actions": [
+  {
+   "t": "Lock In Profitable Work",
+   "bullets": [
+    "Focus on projects that fit your team and deliver strong margins.",
+    "Be selective\u2014every job should make your business better."
+   ],
+   "step": "Review active bids and proposals this week. Challenge any project that will strain your team or margins."
+  },
+  {
+   "t": "Keep Driving Ticket Price Higher",
+   "bullets": [
+    "Continue to scope clearly and manage change orders.",
+    "Don't leave money on the table."
+   ],
+   "step": "Review your last 5 jobs and identify any change orders that could have been captured but weren't."
+  },
+  {
+   "t": "Protect Labor Efficiency",
+   "bullets": [
+    "Keep crews right-sized and minimize overtime.",
+    "Plan the week on Friday\u2014execute Monday."
+   ],
+   "step": "Hold a 15-minute Friday planning huddle with your project managers to set priorities for the next week."
+  }
+ ],
+ "closing": "You're trending in the right direction. Stay disciplined on the basics\u2014plan the work, communicate clearly, and hold the line on pricing. Do that, and the rest will take care of itself.",
+ "slug": "summit-air-mechanical",
+ "meta": {
+  "industry": "HVAC & mechanical contracting",
+  "path": "Operator",
+  "revenue": "~$2M annual",
+  "blurb": "Six months of revenue, ticket price, and labor efficiency \u2014 and the three moves that came out of it."
+ },
+ "real": false,
+ "anonymized": false
+}

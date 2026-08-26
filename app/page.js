@@ -13,6 +13,7 @@ import {
   FAQ,
   FOUNDER,
 } from "@/lib/brand";
+import { EXAMPLES } from "@/lib/examples";
 import Icon from "@/components/Icon";
 import BriefMockup from "@/components/BriefMockup";
 
@@ -99,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* 3 — THE PROBLEM --------------------------------------------------- */}
-      <section>
+      <section className="band-cool">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">{PROBLEM.eyebrow}</div>
@@ -107,9 +108,12 @@ export default function Home() {
             <p>{PROBLEM.sub}</p>
           </div>
           <div className="grid cols-3">
-            {PROBLEM.cards.map((c) => (
+            {PROBLEM.cards.map((c, i) => (
               <div className="card" key={c.title}>
-                <div className="ico" style={{ marginBottom: 12 }}>
+                <div
+                  className={`ico ${["rust", "gold", "teal"][i % 3]}`}
+                  style={{ marginBottom: 12 }}
+                >
                   <Icon name={c.icon} size={22} />
                 </div>
                 <h3>{c.title}</h3>
@@ -121,7 +125,7 @@ export default function Home() {
       </section>
 
       {/* 4 — HOW IT WORKS -------------------------------------------------- */}
-      <section id="how" className="band-alt" style={{ scrollMarginTop: 80 }}>
+      <section id="how" style={{ scrollMarginTop: 80 }}>
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">{HOW_IT_WORKS.eyebrow}</div>
@@ -164,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* 5 — WHY DIFFERENT ------------------------------------------------- */}
-      <section>
+      <section className="band-navy">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">{DIFFERENCE.eyebrow}</div>
@@ -174,9 +178,9 @@ export default function Home() {
 
           <p
             style={{
-              fontSize: "clamp(21px,3.4vw,28px)",
+              fontSize: "clamp(22px,3.6vw,30px)",
               fontWeight: 800,
-              color: "var(--navy)",
+              color: "var(--gold)",
               letterSpacing: "-.02em",
               borderLeft: "4px solid var(--gold)",
               paddingLeft: 18,
@@ -198,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* 6 — THE PATHS ----------------------------------------------------- */}
-      <section className="band-alt">
+      <section>
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">Our Paths</div>
@@ -213,8 +217,16 @@ export default function Home() {
             <Link
               href={`/paths/${flagship.slug}`}
               className="card path-card"
-              style={{ borderColor: "var(--gold)", borderWidth: 2, marginBottom: 18 }}
+              style={{
+                borderColor: "var(--gold)",
+                borderWidth: 2,
+                marginBottom: 18,
+                "--accent": "var(--gold)",
+              }}
             >
+              <div className={`ico ${flagship.accent}`} style={{ marginBottom: 12 }}>
+                <Icon name={flagship.icon} size={24} />
+              </div>
               <span className="badge">{flagship.badge}</span>
               <h3 style={{ fontSize: "clamp(21px,3vw,26px)", marginTop: 6 }}>
                 The {flagship.name} Path
@@ -228,7 +240,15 @@ export default function Home() {
 
           <div className="grid cols-4">
             {others.map((p) => (
-              <Link href={`/paths/${p.slug}`} className="card path-card" key={p.slug}>
+              <Link
+                href={`/paths/${p.slug}`}
+                className="card path-card"
+                key={p.slug}
+                style={{ "--accent": `var(--${p.accent})` }}
+              >
+                <div className={`ico ${p.accent}`} style={{ marginBottom: 10 }}>
+                  <Icon name={p.icon} size={22} />
+                </div>
                 <span className="tag">{p.badge}</span>
                 <h3>The {p.name} Path</h3>
                 <p>{p.short}</p>
@@ -242,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* 7 — WHAT CHANGES -------------------------------------------------- */}
-      <section>
+      <section className="band-warm">
         <div className="wrap narrow">
           <div className="eyebrow">{WHAT_CHANGES.eyebrow}</div>
           <h2 style={{ marginTop: 8 }}>{WHAT_CHANGES.headline}</h2>
@@ -263,7 +283,7 @@ export default function Home() {
       </section>
 
       {/* 8 — PROOF --------------------------------------------------------- */}
-      <section className="band-alt">
+      <section className="band-navy">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">{PROOF.eyebrow}</div>
@@ -286,16 +306,7 @@ export default function Home() {
                 >
                   {c.stats.map((s) => (
                     <div key={s.label}>
-                      <div
-                        style={{
-                          fontSize: "clamp(17px,2.4vw,21px)",
-                          fontWeight: 800,
-                          color: "var(--navy)",
-                          letterSpacing: "-.02em",
-                        }}
-                      >
-                        {s.value}
-                      </div>
+                      <div className="stat-num">{s.value}</div>
                       <div style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 3, lineHeight: 1.3 }}>
                         {s.label}
                       </div>
@@ -305,6 +316,73 @@ export default function Home() {
                 <p>{c.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8b — EXAMPLES ----------------------------------------------------- */}
+      <section className="band-cool">
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">Examples</div>
+            <h2 style={{ marginTop: 8 }}>This is what shows up every month.</h2>
+            <p>
+              Two sample briefings built to show the format, and one from a real client whose name
+              and logo were changed at their request.
+            </p>
+          </div>
+
+          <div className="grid cols-3">
+            {EXAMPLES.map((e) => (
+              <Link href={`/examples/${e.slug}`} className="card path-card" key={e.slug}>
+                <span
+                  className="tag"
+                  style={{ color: e.real ? "var(--gold-deep)" : "var(--muted)" }}
+                >
+                  {e.real ? "Real client" : "Sample"} · {e.meta.path} Path
+                </span>
+                <h3>{e.company.short}</h3>
+                <p className="small" style={{ marginTop: -2 }}>
+                  {e.meta.industry}
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 14,
+                    marginTop: 14,
+                    paddingTop: 14,
+                    borderTop: "1px solid var(--line)",
+                  }}
+                >
+                  {e.kpis.slice(0, 3).map((k) => (
+                    <div key={k.label} style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-.02em" }}>
+                        {k.value}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 10.5,
+                          color: "var(--muted)",
+                          marginTop: 2,
+                          lineHeight: 1.25,
+                        }}
+                      >
+                        {k.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <span className="more">
+                  Read the full briefing <Icon name="arrow" size={15} />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="btn-row" style={{ marginTop: 24 }}>
+            <Link href="/examples" className="btn btn-primary">
+              See all the example briefings
+            </Link>
           </div>
         </div>
       </section>
@@ -340,7 +418,7 @@ export default function Home() {
       {/* 10 — PRICING TEASER -----------------------------------------------
           No numbers here on purpose. Pricing is quoted privately — the /pricing
           page exists but is unlinked. See the NOTE above NAV in lib/brand.js. */}
-      <section className="band-alt">
+      <section className="band-cool">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">Pricing</div>
@@ -415,7 +493,7 @@ export default function Home() {
       </section>
 
       {/* 12 — FAQ ---------------------------------------------------------- */}
-      <section className="band-alt">
+      <section className="band-cool">
         <div className="wrap narrow">
           <div className="eyebrow">Questions</div>
           <h2 style={{ marginTop: 8 }}>What owners usually ask</h2>
@@ -445,7 +523,7 @@ export default function Home() {
         <div className="wrap narrow" style={{ textAlign: "center" }}>
           <h2>Ready to see your numbers work for you?</h2>
           <p className="lead" style={{ marginTop: 14 }}>
-            Book a free 30-minute discovery call. We'll show you the insight hiding in your
+            One short call. We'll show you the insight hiding in your
             business — and the first moves to grow it.
           </p>
           <div className="btn-row" style={{ marginTop: 26, justifyContent: "center" }}>

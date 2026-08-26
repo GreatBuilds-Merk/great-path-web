@@ -158,10 +158,29 @@ export default function Pricing() {
             </table>
           </div>
 
-          <p className="small" style={{ marginTop: 14 }}>
-            Setup works out to roughly two months of the + Insights rate in every band. Annual prepay
-            saves about 20%. Setup is often reduced or waived when you bundle across roles.
-          </p>
+          <div
+            style={{
+              marginTop: 20,
+              padding: "16px 20px",
+              background: "rgba(199,166,90,.14)",
+              borderLeft: "3px solid var(--gold)",
+              borderRadius: 8,
+            }}
+          >
+            <p style={{ fontSize: 15.5, fontWeight: 600, color: "var(--navy-ink)" }}>
+              Setup works out to roughly two months of the + Insights rate in every band. Annual
+              prepay saves about 20%, and setup is often reduced or waived when you bundle across
+              roles.
+            </p>
+            <p style={{ fontSize: 15, marginTop: 10 }}>
+              <a href="#billing" style={{ color: "var(--navy)", fontWeight: 700 }}>
+                See below for how a change in your revenue affects your pricing
+              </a>{" "}
+              <span style={{ color: "var(--muted)" }}>
+                — increases and decreases are handled differently, and nothing moves mid-year.
+              </span>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -196,11 +215,14 @@ export default function Pricing() {
       </section>
 
       {/* how billing works */}
-      <section className="band-alt">
+      <section className="band-alt" id="billing" style={{ scrollMarginTop: 80 }}>
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">Good to know</div>
             <h2 style={{ marginTop: 8 }}>How billing works.</h2>
+            <p>
+              Including what happens to your rate when your revenue moves — up or down.
+            </p>
           </div>
 
           <div className="grid cols-3">

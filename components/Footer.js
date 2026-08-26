@@ -36,7 +36,7 @@ export default function Footer() {
           <span>
             &copy; {new Date().getFullYear()} {BRAND.name}. All rights reserved.
           </span>
-          <span>Example briefings use real businesses with names and details changed.</span>
+          <span>Example briefings are marked as samples or as real client work.</span>
         </div>
       </div>
     </footer>

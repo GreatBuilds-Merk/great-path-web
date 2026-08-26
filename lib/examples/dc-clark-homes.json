@@ -1,0 +1,202 @@
+{
+ "company": {
+  "name": "D.C. Clark Custom Homes & Contracting",
+  "short": "D.C. Clark Custom Homes"
+ },
+ "report": {
+  "title": "OWNER BRIEFING",
+  "period": "June 2026 Performance Report",
+  "preparedFor": "Prepared for D.C. Clark Custom Homes & Contracting",
+  "date": "July 15, 2026",
+  "tagline": [
+   "AI ",
+   "WHERE IT HELPS, ",
+   "HUMAN",
+   " WHERE IT MATTERS."
+  ]
+ },
+ "months": [
+  "JAN 2026",
+  "FEB 2026",
+  "MAR 2026",
+  "APR 2026",
+  "MAY 2026",
+  "JUN 2026"
+ ],
+ "monthsShort": [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN"
+ ],
+ "series": {
+  "revenue": [
+   210000,
+   245000,
+   268000,
+   255000,
+   290000,
+   312000
+  ],
+  "costSqFt": [
+   172,
+   168,
+   165,
+   167,
+   160,
+   156
+  ],
+  "grossMargin": [
+   19.4,
+   20.6,
+   21.8,
+   21.2,
+   22.9,
+   24.8
+  ]
+ },
+ "goals": [
+  {
+   "t": "PROFITABLE GROWTH",
+   "d": "Grow revenue past $3M while protecting gross margin on every build and remodel."
+  },
+  {
+   "t": "COST PRECISION",
+   "d": "Segment material, labor, and overhead on every project so bids are accurate and margin is protected."
+  },
+  {
+   "t": "CREW & PIPELINE PLANNING",
+   "d": "Match crews and materials to the build schedule, and keep the lead pipeline full and followed up."
+  }
+ ],
+ "kpis": [
+  {
+   "icon": "bar",
+   "label": "REVENUE",
+   "value": "$312,000",
+   "delta": "7.6%",
+   "dir": "up",
+   "m": "vs. May 2026",
+   "y": "11.4% vs. Jun 2025"
+  },
+  {
+   "icon": "coins",
+   "label": "GROSS MARGIN",
+   "value": "24.8%",
+   "delta": "1.9 pts",
+   "dir": "up",
+   "m": "vs. May 2026",
+   "y": "3.6 pts vs. Jun 2025"
+  },
+  {
+   "icon": "ruler",
+   "label": "COST / SQ FT",
+   "value": "$156",
+   "delta": "2.5%",
+   "dir": "down",
+   "m": "vs. May 2026",
+   "y": "12.4% vs. Jun 2025"
+  }
+ ],
+ "highlight": "Revenue reached $312K in June, up 7.6% from May and 11.4% year-over-year \u2014 the strongest month of 2026. Gross margin expanded to 24.8% as tighter cost segmentation and lower material waste took hold. Cost per square foot fell again, reflecting sharper bidding and better crew and material planning. With a full pipeline heading into Q3, the focus now is protecting margin as build volume grows.",
+ "takeaways": [
+  {
+   "icon": "trend",
+   "t": "Strong Revenue Momentum",
+   "d": "Revenue grew 7.6% in June to $312K, the best month of the year, as two custom builds and a kitchen remodel hit billing milestones."
+  },
+  {
+   "icon": "coins",
+   "t": "Margin Is Expanding",
+   "d": "Gross margin climbed to 24.8%, up 1.9 pts from May. Segmenting material, labor, and overhead on each project is showing exactly where margin is won or lost."
+  },
+  {
+   "icon": "bin",
+   "t": "Waste Is Coming Down",
+   "d": "Material waste fell to 4.1% of spend, down from 6.8% in January. Better takeoffs and crew planning mean fewer reorders and less scrap on site."
+  }
+ ],
+ "comparisons": [
+  {
+   "icon": "bar",
+   "key": "revenue",
+   "title": "REVENUE (MONTHLY)",
+   "fmt": "k",
+   "note": "June was the highest revenue month of 2026 year-to-date."
+  },
+  {
+   "icon": "ruler",
+   "key": "costSqFt",
+   "title": "COST PER SQUARE FOOT",
+   "fmt": "money",
+   "note": "Down $16/sq ft since January \u2014 tighter bids and less waste."
+  },
+  {
+   "icon": "coins",
+   "key": "grossMargin",
+   "title": "GROSS MARGIN %",
+   "fmt": "pct",
+   "note": "Up 5.4 pts since January as cost segmentation took hold."
+  }
+ ],
+ "insights": [
+  {
+   "icon": "calc",
+   "t": "Cost Segmentation Is Paying Off",
+   "d": "Breaking every project into material, labor, and overhead shows where margin actually comes from. Materials are running ~44% of revenue and labor ~26%\u2014watch both by project type."
+  },
+  {
+   "icon": "hammer",
+   "t": "Crew & Material Planning Is Working",
+   "d": "Weekly planning is cutting downtime and rush orders. Right-sized crews and staged deliveries keep builds moving and waste low."
+  },
+  {
+   "icon": "bin",
+   "t": "Waste Is Real Money",
+   "d": "Trimming waste from 6.8% to 4.1% added margin without raising a single price. Protect this\u2014tight takeoffs and material staging are the levers."
+  },
+  {
+   "icon": "leads",
+   "t": "Your Lead Follow-Up Is Leaking Revenue",
+   "d": "Custom-home leads go cold without fast, consistent follow-up. Automating first response and nurture on every inquiry turns more estimates into signed contracts."
+  }
+ ],
+ "actions": [
+  {
+   "t": "Bid With Full Cost Segmentation",
+   "bullets": [
+    "Break every estimate into material, labor, overhead, and a waste allowance.",
+    "Compare bid vs. actual on recent jobs to sharpen the next one."
+   ],
+   "step": "Pull your last 3 completed projects and calculate true material, labor, and overhead cost per project this week."
+  },
+  {
+   "t": "Plan Crews & Materials to the Schedule",
+   "bullets": [
+    "Match crew size to each phase; stage material deliveries to the build calendar.",
+    "Fewer rush orders and less on-site waste."
+   ],
+   "step": "Hold a Friday planning huddle to lock crews and material drops for the next two weeks."
+  },
+  {
+   "t": "Automate Lead Follow-Up",
+   "bullets": [
+    "Put every new inquiry into an automatic follow-up sequence\u2014text, email, and a callback reminder.",
+    "Never let an estimate request sit more than an hour."
+   ],
+   "step": "Set up an auto-response plus a 5-touch follow-up for new leads so no contact slips through the cracks."
+  }
+ ],
+ "closing": "You're building the right way\u2014growing revenue, protecting margin, and cutting waste. Keep segmenting your costs, planning crews and materials to the schedule, and following up fast on every lead. Do that, and the profit follows.",
+ "slug": "dc-clark-homes",
+ "meta": {
+  "industry": "Custom home building",
+  "path": "Operator",
+  "revenue": "~$4M annual",
+  "blurb": "Margin and cost per square foot, tracked against a build schedule that moves."
+ },
+ "real": false,
+ "anonymized": false
+}
