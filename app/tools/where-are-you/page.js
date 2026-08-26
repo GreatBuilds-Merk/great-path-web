@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 
-export const metadata = { title: "Where Are You on the Path?" };
+export const metadata = {
+  robots: { index: false, follow: false }, title: "Where Are You on the Path?" };
 
 export default function Page() {
   return (

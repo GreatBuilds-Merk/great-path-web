@@ -387,34 +387,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9 — FREE TOOLS ---------------------------------------------------- */}
-      <section>
-        <div className="wrap">
-          <div
-            className="card"
-            style={{ borderColor: "var(--gold)", borderWidth: 2 }}
-          >
-            <div className="eyebrow">Free · no obligation</div>
-            <h2 style={{ marginTop: 8, fontSize: "clamp(23px,3.6vw,30px)" }}>
-              Not sure where you stand?
-            </h2>
-            <p style={{ marginTop: 10, color: "var(--muted)", maxWidth: 620 }}>
-              Take the AI Readiness Audit for a personalized score and three specific next steps.
-              Or find your position on the path in sixty seconds — seasonality included, because a
-              straight line lies to most businesses.
-            </p>
-            <div className="btn-row" style={{ marginTop: 20 }}>
-              <Link href="/tools/ai-readiness-audit" className="btn btn-gold btn-lg">
-                Take the free audit
-              </Link>
-              <Link href="/tools/where-are-you" className="btn btn-ghost">
-                Find your position
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 10 — PRICING TEASER -----------------------------------------------
           No numbers here on purpose. Pricing is quoted privately — the /pricing
           page exists but is unlinked. See the NOTE above NAV in lib/brand.js. */}

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 
-export const metadata = { title: "Free Tools" };
+export const metadata = {
+  robots: { index: false, follow: false }, title: "Free Tools" };
 
 export default function Page() {
   return (

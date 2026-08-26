@@ -78,10 +78,6 @@ export default function Examples() {
             ))}
           </div>
 
-          <div className="placeholder" style={{ marginTop: 20 }}>
-            A fourth example is being built — a seasonal restaurant, with COGS and labor overlaid on
-            item and day-of-week sales.
-          </div>
         </div>
       </section>
 

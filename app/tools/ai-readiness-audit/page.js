@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 
-export const metadata = { title: "AI Readiness Audit" };
+export const metadata = {
+  robots: { index: false, follow: false }, title: "AI Readiness Audit" };
 
 export default function Page() {
   return (

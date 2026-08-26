@@ -87,15 +87,11 @@ export default function PathPage({ params }) {
           <div className="eyebrow">What you get</div>
           <h2 style={{ marginTop: 8 }}>{p.deliverable}</h2>
 
-          {p.exampleSlug ? (
+          {p.exampleSlug && (
             <div className="btn-row" style={{ marginTop: 22 }}>
               <Link href={`/examples/${p.exampleSlug}`} className="btn btn-primary">
                 See a real {p.name} briefing
               </Link>
-            </div>
-          ) : (
-            <div className="placeholder" style={{ marginTop: 22 }}>
-              An example briefing for the {p.name} Path is being built.
             </div>
           )}
         </div>

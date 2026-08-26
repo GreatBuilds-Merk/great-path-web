@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 
-export const metadata = { title: "Monthly Data Template" };
+export const metadata = {
+  robots: { index: false, follow: false }, title: "Monthly Data Template" };
 
 export default function Page() {
   return (
