@@ -42,6 +42,9 @@ const redirects = [
   { source: "/cleanup-patharchive", destination: "/paths/cleanup", permanent: true },
   { source: "/tristext", destination: "/examples", permanent: true },
 
+  // --- moved when Free Tools was hidden ---------------------------------
+  { source: "/tools/data-template", destination: "/data-prep", permanent: true },
+
   // --- Squarespace system paths ------------------------------------------
   { source: "/cart", destination: "/", permanent: false },
 ];

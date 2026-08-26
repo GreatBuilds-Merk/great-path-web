@@ -66,7 +66,11 @@ export default function PathPage({ params }) {
           <h2 style={{ marginTop: 8 }}>The numbers that define progress on this Path.</h2>
           <p style={{ marginTop: 12, color: "var(--muted)" }}>
             You don't have to invent these. They come loaded with the Path — we tune them to your
-            business and set your targets.
+            business and set your targets. Wondering what that means for your data?{" "}
+            <Link href="/data-prep" style={{ color: "var(--navy)", fontWeight: 700 }}>
+              Here's what actually happens to it
+            </Link>
+            .
           </p>
           <div className="grid cols-2" style={{ marginTop: 22 }}>
             {p.kpis.map((k) => (
