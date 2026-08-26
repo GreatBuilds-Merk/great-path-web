@@ -671,3 +671,12 @@ footer.site a:hover {
   background: var(--tint-navy);
   color: var(--navy);
 }
+
+/* --- legal pages ---------------------------------------------------------- */
+.legal p {
+  line-height: 1.75;
+}
+.legal a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
