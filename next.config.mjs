@@ -27,7 +27,8 @@ const redirects = [
   { source: "/the-great-path-difference", destination: "/about", permanent: true },
   { source: "/success-stories", destination: "/examples", permanent: true },
   { source: "/growth-path-examples", destination: "/examples", permanent: true },
-  { source: "/paths", destination: "/paths", permanent: false }, // Squarespace folder index
+  // NOTE: /paths needs NO redirect — it's a real page. A self-referential rule
+  // here ({ source: "/paths", destination: "/paths" }) creates an infinite loop.
 
   // --- franchise sub-pages, until they're rebuilt ------------------------
   { source: "/franchisebrief", destination: "/franchises", permanent: true },
