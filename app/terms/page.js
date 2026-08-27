@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND, LEGAL } from "@/lib/brand";
+import { BRAND, LEGAL, GUARANTEE } from "@/lib/brand";
 import { LegalHero, LegalBody, Clause, P } from "@/components/LegalPage";
 
 export const metadata = {
@@ -116,7 +116,14 @@ export default function Terms() {
         <Clause n="Eighth" title="Limits">
           <P>
             We do the work carefully and honestly, but we cannot guarantee business outcomes. No
-            report can promise revenue, profit, a valuation, or a sale.
+            report can promise revenue, profit, a valuation, or a sale, and nothing we provide
+            should be read as predicting what your business will do.
+          </P>
+          <P>
+            <strong>{GUARANTEE.name} is not an exception to that.</strong> It is a promise about our
+            fee, not about your results — if you hold up your side and the work doesn&apos;t pay for
+            itself several times over, you get half your recurring fees back. We are refunding our
+            own price, not underwriting your business. The terms are in the next clause.
           </P>
           <P>
             To the extent the law allows, our total liability for any claim relating to the work is
@@ -125,7 +132,34 @@ export default function Terms() {
           </P>
         </Clause>
 
-        <Clause n="Ninth" title="Ending the engagement">
+        <Clause n="Ninth" title={GUARANTEE.name}>
+          <P>
+            Available on <strong>+ Insights</strong> and <strong>+ Advisor</strong>. It is not
+            offered on Your Engine, because that tier has no advisor in the loop and we will not
+            guarantee a result we have no ability to influence.
+          </P>
+          <P>
+            <strong>To qualify, you participate.</strong> For twelve consecutive months you send
+            your numbers on time, attend the scheduled reviews, and either act on each month&apos;s
+            recommendations or tell us in writing why you are not. These conditions are about taking
+            part — you are never required to hit a business result in order to claim.
+          </P>
+          <P>
+            <strong>If the measured improvement against the goals set at your Path Setup has not
+            reached five times the recurring fees you paid, we refund fifty percent of those fees.</strong>{" "}
+            Improvement is measured on gross profit against the twelve months before we started,
+            using your own numbers, on definitions agreed in writing before any work begins.
+            One-time events — asset sales, acquisitions, insurance proceeds — are excluded.
+          </P>
+          <P>
+            Setup fees are excluded from any refund; that work is delivered at the start. The claim
+            window opens at month thirteen and closes at month fifteen. One claim per client, per
+            engagement. At month six we review progress together, so a shortfall can be corrected
+            while there is still time — the refund is a backstop, not the plan.
+          </P>
+        </Clause>
+
+        <Clause n="Tenth" title="Ending the engagement">
           <P>
             Either of us can end a recurring engagement at the end of a billing period, for any
             reason. If you leave, you keep every report we have produced for you, and you can ask
@@ -133,7 +167,7 @@ export default function Terms() {
           </P>
         </Clause>
 
-        <Clause n="Tenth" title="Changes and governing law">
+        <Clause n="Eleventh" title="Changes and governing law">
           <P>
             We may update these terms. If a change materially affects active clients, we will tell
             them directly rather than quietly editing this page. These terms are governed by the
@@ -141,7 +175,7 @@ export default function Terms() {
           </P>
         </Clause>
 
-        <Clause n="Eleventh" title="Contact">
+        <Clause n="Twelfth" title="Contact">
           <P>
             Questions about these terms go to{" "}
             <a href={`mailto:${BRAND.emailDan}`} style={{ color: "var(--navy)", fontWeight: 700 }}>

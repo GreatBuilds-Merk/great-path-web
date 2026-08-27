@@ -1,10 +1,8 @@
 // ============================================================================
-// /pricing — PRIVATE QUOTE SHEET
+// /pricing — PUBLIC as of 2026-08-25
 //
-// This page is deliberately NOT in the nav or footer. It's the URL you send to
-// a live prospect after a call, the same way /pricing-1 worked on Squarespace.
-// To make pricing public, add it back to NAV in lib/brand.js — nothing here
-// needs to change.
+// Shows what you get, what it costs, and the guarantee. The guarantee is the
+// reason this page can be public: it turns a price into a risk-free decision.
 // ============================================================================
 
 import Link from "next/link";
@@ -14,14 +12,14 @@ import {
   TIERS,
   OTHER_PRICING,
   BILLING_NOTES,
+  GUARANTEE,
   money,
 } from "@/lib/brand";
 import Icon from "@/components/Icon";
 
 export const metadata = {
   title: "Pricing",
-  description: "Pricing that scales with your business.",
-  robots: { index: false, follow: false },
+  description: `Pricing that scales with your business. ${GUARANTEE.hook} ${GUARANTEE.headline}`,
 };
 
 export default function Pricing() {
@@ -42,6 +40,26 @@ export default function Pricing() {
             <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
               Book a call for your exact quote
             </a>
+            <a href="#guarantee" className="btn btn-ghost-light btn-lg">
+              {GUARANTEE.hook}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* the guarantee — stated before any price, because it changes how the
+          prices read */}
+      <section className="band-warm">
+        <div className="wrap narrow">
+          <div className="eyebrow">{GUARANTEE.name}</div>
+          <h2 style={{ marginTop: 8 }}>{GUARANTEE.headline}</h2>
+          <p className="lead" style={{ marginTop: 16, color: "var(--ink)" }}>
+            {GUARANTEE.promise}
+          </p>
+          <div className="btn-row" style={{ marginTop: 22 }}>
+            <a href="#guarantee" className="btn btn-ghost">
+              How it works
+            </a>
           </div>
         </div>
       </section>
@@ -61,11 +79,17 @@ export default function Pricing() {
           <div className="grid cols-3">
             {TIERS.map((t) => (
               <div className={`card price-card${t.highlight ? " featured" : ""}`} key={t.id}>
-                {t.highlight && (
-                  <span className="badge" style={{ marginBottom: 12 }}>
-                    Flagship
-                  </span>
-                )}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
+                  {t.highlight && <span className="badge">Flagship</span>}
+                  {t.guaranteed && (
+                    <span
+                      className="badge"
+                      style={{ background: "var(--navy)", color: "#fff" }}
+                    >
+                      {GUARANTEE.hook}
+                    </span>
+                  )}
+                </div>
                 <h3>{t.name}</h3>
                 <p className="small" style={{ marginTop: 4 }}>
                   {t.tagline}
@@ -88,8 +112,106 @@ export default function Pricing() {
                 <p className="small" style={{ marginTop: "auto" }}>
                   Setup {money(t.setup.b1)} – {money(t.setup.b4)}
                 </p>
+                {t.guaranteed && (
+                  <p
+                    style={{
+                      marginTop: 12,
+                      paddingTop: 12,
+                      borderTop: "1px solid var(--line)",
+                      fontSize: 13.5,
+                      fontWeight: 700,
+                      color: "var(--navy)",
+                    }}
+                  >
+                    Covered by {GUARANTEE.name}
+                  </p>
+                )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* the guarantee in full */}
+      <section id="guarantee" className="band-navy" style={{ scrollMarginTop: 80 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">{GUARANTEE.name}</div>
+            <h2 style={{ marginTop: 8 }}>{GUARANTEE.hook}</h2>
+            <p>{GUARANTEE.why}</p>
+          </div>
+
+          <div className="grid cols-2">
+            <div className="card">
+              <h3>What you do</h3>
+              <p style={{ marginTop: 8 }}>
+                Three things. All of them are about showing up — none of them are about
+                hitting a number.
+              </p>
+              <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
+                {GUARANTEE.qualify.map((q) => (
+                  <li key={q} style={{ fontSize: 15 }}>
+                    <span className="mk">
+                      <Icon name="check" size={16} />
+                    </span>
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="card">
+              <h3>How it&apos;s measured</h3>
+              <p style={{ marginTop: 8 }}>
+                Agreed in writing before we start, so there&apos;s a number at the end instead
+                of an argument.
+              </p>
+              <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
+                {GUARANTEE.measured.map((m) => (
+                  <li key={m} style={{ fontSize: 15 }}>
+                    <span className="mk">
+                      <Icon name="check" size={16} />
+                    </span>
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <p
+            style={{
+              marginTop: 22,
+              padding: "16px 20px",
+              background: "rgba(199,166,90,.14)",
+              borderLeft: "3px solid var(--gold)",
+              borderRadius: 8,
+              fontSize: 15.5,
+              color: "var(--on-dark)",
+            }}
+          >
+            {GUARANTEE.honest}
+          </p>
+
+          <div style={{ marginTop: 28 }}>
+            <h3 style={{ color: "#fff" }}>The details</h3>
+            <ul style={{ marginTop: 12 }}>
+              {GUARANTEE.finePrint.map((f) => (
+                <li
+                  key={f}
+                  style={{
+                    display: "flex",
+                    gap: 10,
+                    padding: "7px 0",
+                    fontSize: 14.5,
+                    color: "rgba(238,242,247,.82)",
+                  }}
+                >
+                  <span style={{ color: "var(--gold)", flex: "0 0 auto" }}>·</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
