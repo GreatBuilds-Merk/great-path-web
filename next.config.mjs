@@ -23,8 +23,10 @@ const redirects = [
   { source: "/ai-readiness-audit", destination: "/tools/ai-readiness-audit", permanent: true },
   { source: "/pricing-1", destination: "/pricing", permanent: true },
 
+  // NOTE: /the-great-path-difference is a REAL page again (it kept the old
+  // Squarespace URL deliberately, to hold its inbound links). No redirect.
+
   // --- folded into other pages ------------------------------------------
-  { source: "/the-great-path-difference", destination: "/about", permanent: true },
   { source: "/success-stories", destination: "/examples", permanent: true },
   { source: "/growth-path-examples", destination: "/examples", permanent: true },
   // NOTE: /paths needs NO redirect — it's a real page. A self-referential rule
