@@ -122,7 +122,7 @@ export default function Terms() {
           <P>
             <strong>{GUARANTEE.name} is not an exception to that.</strong> It is a promise about our
             fee, not about your results — if you hold up your side and the work doesn&apos;t pay for
-            itself several times over, you get half your recurring fees back. We are refunding our
+            itself two and a half times over, you get half your recurring fees back. We are refunding our
             own price, not underwriting your business. The terms are in the next clause.
           </P>
           <P>
@@ -134,28 +134,37 @@ export default function Terms() {
 
         <Clause n="Ninth" title={GUARANTEE.name}>
           <P>
-            Available on <strong>+ Insights</strong> and <strong>+ Advisor</strong>. It is not
-            offered on Your Engine, because that tier has no advisor in the loop and we will not
-            guarantee a result we have no ability to influence.
+            Included with <strong>+ Advisor</strong> only. It is not offered on Your Engine or
+            + Insights, because those tiers do not include the twelve working sessions the
+            guarantee depends on. A guarantee only means something when we are in the room often
+            enough to affect the outcome.
           </P>
           <P>
-            <strong>To qualify, you participate.</strong> For twelve consecutive months you send
-            your numbers on time, attend the scheduled reviews, and either act on each month&apos;s
-            recommendations or tell us in writing why you are not. These conditions are about taking
-            part — you are never required to hit a business result in order to claim.
+            <strong>To qualify, you take part.</strong> Over twelve months you meet with us twelve
+            times — one working session a month — send your numbers each month, and either act on
+            the agreed checkpoint actions or tell us why you are not. You may reschedule, but not
+            more than twice within any thirty-day window; a third missed attempt in that window is
+            a lapse. Sessions we reschedule never count against you.
           </P>
           <P>
-            <strong>If the measured improvement against the goals set at your Path Setup has not
-            reached five times the recurring fees you paid, we refund fifty percent of those fees.</strong>{" "}
-            Improvement is measured on gross profit against the twelve months before we started,
-            using your own numbers, on definitions agreed in writing before any work begins.
+            <strong>We will not spring a lapse on you.</strong> If something slips you will hear it
+            from us that week, with what it takes to get back on track — not for the first time when
+            you try to claim. Most lapses are curable. At month six we review progress together
+            while there is still time to change the outcome.
+          </P>
+          <P>
+            <strong>If the measured improvement has not reached two and a half times the recurring
+            fees you paid, you may claim.</strong> Improvement is measured against the checkpoints
+            set at your Path Setup, on gross profit, baselined against the twelve months before we
+            began, using your own numbers and definitions agreed in writing before any work starts.
+            Progress is reviewed in every session and confirmed to you in writing afterwards.
             One-time events — asset sales, acquisitions, insurance proceeds — are excluded.
           </P>
           <P>
-            Setup fees are excluded from any refund; that work is delivered at the start. The claim
-            window opens at month thirteen and closes at month fifteen. One claim per client, per
-            engagement. At month six we review progress together, so a shortfall can be corrected
-            while there is still time — the refund is a backstop, not the plan.
+            The claim window opens at month thirteen and closes at month fifteen. The remedy is
+            fifty percent of recurring fees paid, and <strong>you choose the form</strong>: a
+            one-time refund, or a credit applied against the following year. Setup fees are excluded
+            — that work is delivered at the start. One claim per client, per engagement.
           </P>
         </Clause>
 

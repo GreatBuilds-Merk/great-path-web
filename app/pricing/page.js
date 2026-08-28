@@ -1,8 +1,9 @@
 // ============================================================================
-// /pricing — PUBLIC as of 2026-08-25
+// /pricing — PUBLIC
 //
-// Shows what you get, what it costs, and the guarantee. The guarantee is the
-// reason this page can be public: it turns a price into a risk-free decision.
+// The table shows dollar RANGES only. The underlying percentages are internal
+// (RATES in lib/brand.js) — the note under the table explains the mechanic in
+// one sentence, and anything more detailed gets fielded on a call.
 // ============================================================================
 
 import Link from "next/link";
@@ -13,6 +14,10 @@ import {
   OTHER_PRICING,
   BILLING_NOTES,
   GUARANTEE,
+  PRICING_NOTE,
+  REPRICING_NOTE,
+  rangeLabel,
+  tierSetup,
   money,
 } from "@/lib/brand";
 import Icon from "@/components/Icon";
@@ -30,11 +35,11 @@ export default function Pricing() {
           <div className="eyebrow" style={{ color: "var(--gold)" }}>
             Pricing
           </div>
-          <h1 style={{ marginTop: 12 }}>Pricing that scales with your business.</h1>
+          <h1 style={{ marginTop: 12 }}>Priced to the size of your business.</h1>
           <p className="lead" style={{ marginTop: 16 }}>
-            Fortune 500 technology and insight, at small business pricing. Your rate is set from your
-            revenue — so as we help you grow, your price never spikes. Every plan starts with a call
-            to map the right fit and confirm your exact number.
+            Fortune 500 technology and insight, at small business pricing. One flat price for the
+            engine on its own — and for the advised tiers, a rate that fits the business and
+            improves as you grow.
           </p>
           <div className="btn-row" style={{ marginTop: 26 }}>
             <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
@@ -42,23 +47,6 @@ export default function Pricing() {
             </a>
             <a href="#guarantee" className="btn btn-ghost-light btn-lg">
               {GUARANTEE.hook}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* the guarantee — stated before any price, because it changes how the
-          prices read */}
-      <section className="band-warm">
-        <div className="wrap narrow">
-          <div className="eyebrow">{GUARANTEE.name}</div>
-          <h2 style={{ marginTop: 8 }}>{GUARANTEE.headline}</h2>
-          <p className="lead" style={{ marginTop: 16, color: "var(--ink)" }}>
-            {GUARANTEE.promise}
-          </p>
-          <div className="btn-row" style={{ marginTop: 22 }}>
-            <a href="#guarantee" className="btn btn-ghost">
-              How it works
             </a>
           </div>
         </div>
@@ -80,25 +68,38 @@ export default function Pricing() {
             {TIERS.map((t) => (
               <div className={`card price-card${t.highlight ? " featured" : ""}`} key={t.id}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
-                  {t.highlight && <span className="badge">Flagship</span>}
+                  {t.highlight && <span className="badge">Most popular</span>}
                   {t.guaranteed && (
-                    <span
-                      className="badge"
-                      style={{ background: "var(--navy)", color: "#fff" }}
-                    >
+                    <span className="badge" style={{ background: "var(--navy)", color: "#fff" }}>
                       {GUARANTEE.hook}
                     </span>
                   )}
                 </div>
+
                 <h3>{t.name}</h3>
                 <p className="small" style={{ marginTop: 4 }}>
                   {t.tagline}
                 </p>
-                <div className="price" style={{ margin: "14px 0 6px", fontSize: 30 }}>
-                  {money(t.monthly.b1)}
-                  <small> – {money(t.monthly.b4)}/mo</small>
+
+                <div className="price" style={{ margin: "14px 0 6px", fontSize: 38 }}>
+                  {t.flatMonthly ? (
+                    <>
+                      {money(t.flatMonthly)}
+                      <small> /mo</small>
+                    </>
+                  ) : (
+                    <>
+                      {rangeLabel(t.id, "b1")}
+                      <small> +/mo</small>
+                    </>
+                  )}
                 </div>
+                <p className="small" style={{ marginBottom: 12 }}>
+                  {t.flatMonthly ? t.note : "Scales with your revenue — see the table below."}
+                </p>
+
                 <p style={{ fontSize: 14.5, marginBottom: 14 }}>{t.summary}</p>
+
                 <ul className="includes" style={{ marginBottom: 16 }}>
                   {t.includes.map((i) => (
                     <li key={i}>
@@ -109,26 +110,106 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
+
                 <p className="small" style={{ marginTop: "auto" }}>
-                  Setup {money(t.setup.b1)} – {money(t.setup.b4)}
+                  Setup{" "}
+                  {t.flatSetup
+                    ? money(t.flatSetup)
+                    : `${money(tierSetup(t.id, "b1"))} – ${money(tierSetup(t.id, "b4"))}`}
                 </p>
-                {t.guaranteed && (
-                  <p
-                    style={{
-                      marginTop: 12,
-                      paddingTop: 12,
-                      borderTop: "1px solid var(--line)",
-                      fontSize: 13.5,
-                      fontWeight: 700,
-                      color: "var(--navy)",
-                    }}
-                  >
-                    Covered by {GUARANTEE.name}
-                  </p>
-                )}
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* the band table */}
+      <section className="band-cool">
+        <div className="wrap">
+          <div className="section-head">
+            <div className="eyebrow">Your band</div>
+            <h2 style={{ marginTop: 8 }}>Find your revenue, read across.</h2>
+          </div>
+
+          <div className="scroll-x">
+            <table
+              style={{
+                width: "100%",
+                minWidth: 620,
+                borderCollapse: "collapse",
+                background: "var(--card)",
+                borderRadius: "var(--radius)",
+                overflow: "hidden",
+                fontSize: 14.5,
+              }}
+            >
+              <thead>
+                <tr style={{ background: "var(--navy)", color: "#fff", textAlign: "left" }}>
+                  <th style={{ padding: "13px 16px", fontWeight: 700 }}>Annual revenue</th>
+                  {TIERS.map((t) => (
+                    <th key={t.id} style={{ padding: "13px 16px", fontWeight: 700 }}>
+                      {t.name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {REVENUE_BANDS.map((b, i) => (
+                  <tr
+                    key={b.id}
+                    style={{
+                      borderTop: "1px solid var(--line)",
+                      background: i % 2 ? "var(--card-alt)" : "var(--card)",
+                    }}
+                  >
+                    <td style={{ padding: "13px 16px", fontWeight: 700 }}>{b.label}</td>
+                    {TIERS.map((t) => {
+                      const label = rangeLabel(t.id, b.id);
+                      const setup = tierSetup(t.id, b.id);
+                      return (
+                        <td key={t.id} style={{ padding: "13px 16px" }}>
+                          {label === "Custom" ? (
+                            <span style={{ color: "var(--muted)" }}>Custom</span>
+                          ) : (
+                            <>
+                              <span style={{ fontWeight: 700, whiteSpace: "nowrap" }}>{label}</span>
+                              <span style={{ color: "var(--muted)" }}>/mo</span>
+                              {setup && (
+                                <>
+                                  <br />
+                                  <span className="small">setup {money(setup)}</span>
+                                </>
+                              )}
+                            </>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            style={{
+              marginTop: 20,
+              padding: "16px 20px",
+              background: "rgba(199,166,90,.14)",
+              borderLeft: "3px solid var(--gold)",
+              borderRadius: 8,
+            }}
+          >
+            <p style={{ fontSize: 15.5, color: "var(--navy-ink)", fontWeight: 600 }}>
+              {PRICING_NOTE}
+            </p>
+            <p style={{ fontSize: 15, marginTop: 10, color: "var(--ink)" }}>{REPRICING_NOTE}</p>
+          </div>
+
+          <p className="small" style={{ marginTop: 14 }}>
+            Annual prepay saves about 20%. Setup is often reduced or waived when you bundle across
+            roles.
+          </p>
         </div>
       </section>
 
@@ -138,16 +219,26 @@ export default function Pricing() {
           <div className="section-head">
             <div className="eyebrow">{GUARANTEE.name}</div>
             <h2 style={{ marginTop: 8 }}>{GUARANTEE.hook}</h2>
-            <p>{GUARANTEE.why}</p>
+            <p>{GUARANTEE.promise}</p>
           </div>
 
-          <div className="grid cols-2">
+          <p
+            style={{
+              marginBottom: 24,
+              padding: "14px 18px",
+              background: "rgba(255,255,255,.07)",
+              borderLeft: "3px solid var(--gold)",
+              borderRadius: 8,
+              fontSize: 15,
+              color: "var(--on-dark)",
+            }}
+          >
+            {GUARANTEE.whyAdvisorOnly}
+          </p>
+
+          <div className="grid cols-3">
             <div className="card">
               <h3>What you do</h3>
-              <p style={{ marginTop: 8 }}>
-                Three things. All of them are about showing up — none of them are about
-                hitting a number.
-              </p>
               <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
                 {GUARANTEE.qualify.map((q) => (
                   <li key={q} style={{ fontSize: 15 }}>
@@ -161,11 +252,21 @@ export default function Pricing() {
             </div>
 
             <div className="card">
+              <h3>It isn&apos;t a gotcha</h3>
+              <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
+                {GUARANTEE.fairness.map((f) => (
+                  <li key={f} style={{ fontSize: 15 }}>
+                    <span className="mk">
+                      <Icon name="check" size={16} />
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="card">
               <h3>How it&apos;s measured</h3>
-              <p style={{ marginTop: 8 }}>
-                Agreed in writing before we start, so there&apos;s a number at the end instead
-                of an argument.
-              </p>
               <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
                 {GUARANTEE.measured.map((m) => (
                   <li key={m} style={{ fontSize: 15 }}>
@@ -216,96 +317,6 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* the band table */}
-      <section className="band-alt">
-        <div className="wrap">
-          <div className="section-head">
-            <div className="eyebrow">Your band</div>
-            <h2 style={{ marginTop: 8 }}>Find your revenue, read across.</h2>
-          </div>
-
-          <div className="scroll-x">
-            <table
-              style={{
-                width: "100%",
-                minWidth: 620,
-                borderCollapse: "collapse",
-                background: "var(--card)",
-                borderRadius: "var(--radius)",
-                overflow: "hidden",
-                fontSize: 14.5,
-              }}
-            >
-              <thead>
-                <tr style={{ background: "var(--navy)", color: "#fff", textAlign: "left" }}>
-                  <th style={{ padding: "13px 16px", fontWeight: 700 }}>Annual revenue</th>
-                  {TIERS.map((t) => (
-                    <th key={t.id} style={{ padding: "13px 16px", fontWeight: 700 }}>
-                      {t.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {REVENUE_BANDS.map((b, i) => (
-                  <tr
-                    key={b.id}
-                    style={{
-                      borderTop: "1px solid var(--line)",
-                      background: i % 2 ? "var(--card-alt)" : "var(--card)",
-                    }}
-                  >
-                    <td style={{ padding: "13px 16px", fontWeight: 700 }}>{b.label}</td>
-                    {TIERS.map((t) => {
-                      const m = t.monthly[b.id];
-                      const s = t.setup[b.id];
-                      return (
-                        <td key={t.id} style={{ padding: "13px 16px" }}>
-                          {m == null ? (
-                            <span style={{ color: "var(--muted)" }}>Custom</span>
-                          ) : (
-                            <>
-                              <span style={{ fontWeight: 700 }}>{money(m)}</span>
-                              <span style={{ color: "var(--muted)" }}>/mo</span>
-                              <br />
-                              <span className="small">setup {money(s)}</span>
-                            </>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div
-            style={{
-              marginTop: 20,
-              padding: "16px 20px",
-              background: "rgba(199,166,90,.14)",
-              borderLeft: "3px solid var(--gold)",
-              borderRadius: 8,
-            }}
-          >
-            <p style={{ fontSize: 15.5, fontWeight: 600, color: "var(--navy-ink)" }}>
-              Setup works out to roughly two months of the + Insights rate in every band. Annual
-              prepay saves about 20%, and setup is often reduced or waived when you bundle across
-              roles.
-            </p>
-            <p style={{ fontSize: 15, marginTop: 10 }}>
-              <a href="#billing" style={{ color: "var(--navy)", fontWeight: 700 }}>
-                See below for how a change in your revenue affects your pricing
-              </a>{" "}
-              <span style={{ color: "var(--muted)" }}>
-                — increases and decreases are handled differently, and nothing moves mid-year.
-              </span>
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* everything else */}
       <section>
         <div className="wrap">
@@ -320,11 +331,11 @@ export default function Pricing() {
                 <h3>{o.name}</h3>
                 <p
                   style={{
-                    fontWeight: 800,
+                    fontFamily: "var(--font-display)",
+                    fontWeight: 700,
                     color: "var(--navy)",
-                    fontSize: 19,
+                    fontSize: 26,
                     margin: "8px 0 10px",
-                    letterSpacing: "-.02em",
                   }}
                 >
                   {o.line}
@@ -337,14 +348,11 @@ export default function Pricing() {
       </section>
 
       {/* how billing works */}
-      <section className="band-alt" id="billing" style={{ scrollMarginTop: 80 }}>
+      <section className="band-cool">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">Good to know</div>
             <h2 style={{ marginTop: 8 }}>How billing works.</h2>
-            <p>
-              Including what happens to your rate when your revenue moves — up or down.
-            </p>
           </div>
 
           <div className="grid cols-3">
@@ -368,8 +376,8 @@ export default function Pricing() {
             <div>
               <h3>What if my revenue changes mid-year?</h3>
               <p style={{ marginTop: 8, color: "var(--muted)" }}>
-                Nothing changes mid-year. We revisit your tier at your one-year mark — increases based
-                on your two-year average, decreases based on last year&apos;s change.
+                Nothing changes mid-year. We revisit your rate at your one-year mark — increases on
+                a twenty-four month average, decreases on the last twelve.
               </p>
             </div>
             <div>
