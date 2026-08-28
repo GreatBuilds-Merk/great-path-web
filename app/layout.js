@@ -2,6 +2,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import IntroModal from "@/components/IntroModal";
 import { BRAND } from "@/lib/brand";
 
 export const metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <Footer />
+        <IntroModal />
         <Analytics />
       </body>
     </html>
