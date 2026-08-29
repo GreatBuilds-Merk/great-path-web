@@ -13,7 +13,6 @@ import {
   TIERS,
   OTHER_PRICING,
   BILLING_NOTES,
-  GUARANTEE,
   PRICING_NOTE,
   REPRICING_NOTE,
   rangeLabel,
@@ -24,7 +23,8 @@ import Icon from "@/components/Icon";
 
 export const metadata = {
   title: "Pricing",
-  description: `Pricing that scales with your business. ${GUARANTEE.hook} ${GUARANTEE.headline}`,
+  description:
+    "What each tier includes, what it costs, and how the price scales with your business.",
 };
 
 export default function Pricing() {
@@ -44,9 +44,6 @@ export default function Pricing() {
           <div className="btn-row" style={{ marginTop: 26 }}>
             <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">
               Book a call for your exact quote
-            </a>
-            <a href="#guarantee" className="btn btn-ghost-light btn-lg">
-              {GUARANTEE.hook}
             </a>
           </div>
         </div>
@@ -69,11 +66,6 @@ export default function Pricing() {
               <div className={`card price-card${t.highlight ? " featured" : ""}`} key={t.id}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
                   {t.highlight && <span className="badge">Most popular</span>}
-                  {t.guaranteed && (
-                    <span className="badge" style={{ background: "var(--navy)", color: "#fff" }}>
-                      {GUARANTEE.hook}
-                    </span>
-                  )}
                 </div>
 
                 <h3>{t.name}</h3>
@@ -210,110 +202,6 @@ export default function Pricing() {
             Annual prepay saves about 20%. Setup is often reduced or waived when you bundle across
             roles.
           </p>
-        </div>
-      </section>
-
-      {/* the guarantee in full */}
-      <section id="guarantee" className="band-navy" style={{ scrollMarginTop: 80 }}>
-        <div className="wrap">
-          <div className="section-head">
-            <div className="eyebrow">{GUARANTEE.name}</div>
-            <h2 style={{ marginTop: 8 }}>{GUARANTEE.hook}</h2>
-            <p>{GUARANTEE.promise}</p>
-          </div>
-
-          <p
-            style={{
-              marginBottom: 24,
-              padding: "14px 18px",
-              background: "rgba(255,255,255,.07)",
-              borderLeft: "3px solid var(--gold)",
-              borderRadius: 8,
-              fontSize: 15,
-              color: "var(--on-dark)",
-            }}
-          >
-            {GUARANTEE.whyAdvisorOnly}
-          </p>
-
-          <div className="grid cols-3">
-            <div className="card">
-              <h3>What you do</h3>
-              <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
-                {GUARANTEE.qualify.map((q) => (
-                  <li key={q} style={{ fontSize: 15 }}>
-                    <span className="mk">
-                      <Icon name="check" size={16} />
-                    </span>
-                    {q}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card">
-              <h3>It isn&apos;t a gotcha</h3>
-              <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
-                {GUARANTEE.fairness.map((f) => (
-                  <li key={f} style={{ fontSize: 15 }}>
-                    <span className="mk">
-                      <Icon name="check" size={16} />
-                    </span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card">
-              <h3>How it&apos;s measured</h3>
-              <ul className="fit-list fit-yes" style={{ marginTop: 12 }}>
-                {GUARANTEE.measured.map((m) => (
-                  <li key={m} style={{ fontSize: 15 }}>
-                    <span className="mk">
-                      <Icon name="check" size={16} />
-                    </span>
-                    {m}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <p
-            style={{
-              marginTop: 22,
-              padding: "16px 20px",
-              background: "rgba(199,166,90,.14)",
-              borderLeft: "3px solid var(--gold)",
-              borderRadius: 8,
-              fontSize: 15.5,
-              color: "var(--on-dark)",
-            }}
-          >
-            {GUARANTEE.honest}
-          </p>
-
-          <div style={{ marginTop: 28 }}>
-            <h3 style={{ color: "#fff" }}>The details</h3>
-            <ul style={{ marginTop: 12 }}>
-              {GUARANTEE.finePrint.map((f) => (
-                <li
-                  key={f}
-                  style={{
-                    display: "flex",
-                    gap: 10,
-                    padding: "7px 0",
-                    fontSize: 14.5,
-                    color: "rgba(238,242,247,.82)",
-                  }}
-                >
-                  <span style={{ color: "var(--gold)", flex: "0 0 auto" }}>·</span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 

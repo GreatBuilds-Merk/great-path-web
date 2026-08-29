@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND, LEGAL, GUARANTEE } from "@/lib/brand";
+import { BRAND, LEGAL } from "@/lib/brand";
 import { LegalHero, LegalBody, Clause, P } from "@/components/LegalPage";
 
 export const metadata = {
@@ -120,55 +120,13 @@ export default function Terms() {
             should be read as predicting what your business will do.
           </P>
           <P>
-            <strong>{GUARANTEE.name} is not an exception to that.</strong> It is a promise about our
-            fee, not about your results — if you hold up your side and the work doesn&apos;t pay for
-            itself two and a half times over, you get half your recurring fees back. We are refunding our
-            own price, not underwriting your business. The terms are in the next clause.
-          </P>
-          <P>
             To the extent the law allows, our total liability for any claim relating to the work is
             limited to the fees you paid us in the twelve months before the claim arose. We are not
             liable for indirect or consequential losses, including lost profits.
           </P>
         </Clause>
 
-        <Clause n="Ninth" title={GUARANTEE.name}>
-          <P>
-            Included with <strong>+ Advisor</strong> only. It is not offered on Your Engine or
-            + Insights, because those tiers do not include the twelve working sessions the
-            guarantee depends on. A guarantee only means something when we are in the room often
-            enough to affect the outcome.
-          </P>
-          <P>
-            <strong>To qualify, you take part.</strong> Over twelve months you meet with us twelve
-            times — one working session a month — send your numbers each month, and either act on
-            the agreed checkpoint actions or tell us why you are not. You may reschedule, but not
-            more than twice within any thirty-day window; a third missed attempt in that window is
-            a lapse. Sessions we reschedule never count against you.
-          </P>
-          <P>
-            <strong>We will not spring a lapse on you.</strong> If something slips you will hear it
-            from us that week, with what it takes to get back on track — not for the first time when
-            you try to claim. Most lapses are curable. At month six we review progress together
-            while there is still time to change the outcome.
-          </P>
-          <P>
-            <strong>If the measured improvement has not reached two and a half times the recurring
-            fees you paid, you may claim.</strong> Improvement is measured against the checkpoints
-            set at your Path Setup, on gross profit, baselined against the twelve months before we
-            began, using your own numbers and definitions agreed in writing before any work starts.
-            Progress is reviewed in every session and confirmed to you in writing afterwards.
-            One-time events — asset sales, acquisitions, insurance proceeds — are excluded.
-          </P>
-          <P>
-            The claim window opens at month thirteen and closes at month fifteen. The remedy is
-            fifty percent of recurring fees paid, and <strong>you choose the form</strong>: a
-            one-time refund, or a credit applied against the following year. Setup fees are excluded
-            — that work is delivered at the start. One claim per client, per engagement.
-          </P>
-        </Clause>
-
-        <Clause n="Tenth" title="Ending the engagement">
+        <Clause n="Ninth" title="Ending the engagement">
           <P>
             Either of us can end a recurring engagement at the end of a billing period, for any
             reason. If you leave, you keep every report we have produced for you, and you can ask
@@ -176,7 +134,7 @@ export default function Terms() {
           </P>
         </Clause>
 
-        <Clause n="Eleventh" title="Changes and governing law">
+        <Clause n="Tenth" title="Changes and governing law">
           <P>
             We may update these terms. If a change materially affects active clients, we will tell
             them directly rather than quietly editing this page. These terms are governed by the
@@ -184,7 +142,7 @@ export default function Terms() {
           </P>
         </Clause>
 
-        <Clause n="Twelfth" title="Contact">
+        <Clause n="Eleventh" title="Contact">
           <P>
             Questions about these terms go to{" "}
             <a href={`mailto:${BRAND.emailDan}`} style={{ color: "var(--navy)", fontWeight: 700 }}>

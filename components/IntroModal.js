@@ -19,7 +19,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BRAND, POPUP, GUARANTEE } from "@/lib/brand";
+import { BRAND, POPUP } from "@/lib/brand";
 import Icon from "./Icon";
 
 const SUPPRESS = ["/contact", "/pricing", "/terms", "/privacy"];
@@ -116,22 +116,21 @@ export default function IntroModal() {
           </p>
 
           <div className="modal-guarantee">
-            <div className="eyebrow">{POPUP.guaranteeLead}</div>
+            <div className="eyebrow">{POPUP.proofLead}</div>
             <p
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(26px,5vw,34px)",
+                fontSize: "clamp(24px,4.6vw,31px)",
                 fontWeight: 700,
                 color: "var(--navy-ink)",
-                lineHeight: 1.1,
+                lineHeight: 1.15,
                 marginTop: 6,
               }}
             >
-              {GUARANTEE.hook}
+              &ldquo;{POPUP.proofQuote}&rdquo;
             </p>
             <p className="small" style={{ marginTop: 8 }}>
-              Do your part for twelve months. If it hasn&apos;t paid for itself five times
-              over, half your fees come back.
+              {POPUP.proofLine}
             </p>
           </div>
 
