@@ -91,7 +91,7 @@ export default function Contact() {
             <div className="eyebrow">Pick a time</div>
             <h2 style={{ marginTop: 8 }}>Fifteen minutes to see what&apos;s hiding in your numbers.</h2>
             <p>
-              A quick intro — no prep, no pitch deck. We&apos;ll look at what you already have and
+              A quick intro. No prep, no pitch deck. We&apos;ll look at what you already have and
               tell you honestly whether there&apos;s something worth chasing.
             </p>
           </div>

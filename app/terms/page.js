@@ -30,7 +30,7 @@ export default function Terms() {
           <P>
             Depending on the Path you choose: an advisory setup session, a configured set of
             measures tied to goals you agree with us, and recurring reports built from data you
-            send us — along with specific recommended actions. Some Paths include project work or
+            send us, along with specific recommended actions. Some Paths include project work or
             direct advisory time instead of, or alongside, recurring reports.
           </P>
           <P>
@@ -56,7 +56,7 @@ export default function Terms() {
         <Clause n="Fourth" title="What we need from you">
           <P>
             The work depends on the data you send. You agree to provide it accurately and on a
-            reasonable schedule, and to tell us when something material changes in the business —
+            reasonable schedule, and to tell us when something material changes in the business:
             a new location, a change in how revenue is recorded, a shift in goals.
           </P>
           <P>
@@ -73,7 +73,7 @@ export default function Terms() {
           <P>
             <strong>Setup fees are one-time and non-refundable once the setup session has taken
             place</strong>, because that is real work delivered. Recurring fees are month-to-month
-            with no long-term lock-in — you can stop at the end of a billing period.
+            with no long-term lock-in. You can stop at the end of a billing period.
           </P>
           <P>
             We review your rate once a year, at your anniversary. Increases are based on your
@@ -108,7 +108,7 @@ export default function Terms() {
           </P>
           <P>
             If we ever use work in marketing, it will be anonymized by industry with the business,
-            its location, and its true performance figures changed to protect it — unless you have
+            its location, and its true performance figures changed to protect it, unless you have
             given us written permission to be named.
           </P>
         </Clause>

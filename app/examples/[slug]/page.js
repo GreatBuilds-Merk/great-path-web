@@ -11,7 +11,7 @@ export function generateMetadata({ params }) {
   const e = getExample(params.slug);
   if (!e) return {};
   return {
-    title: `${e.company.short} — Example Briefing`,
+    title: `${e.company.short} · Example Briefing`,
     description: e.meta.blurb,
   };
 }
@@ -43,7 +43,7 @@ export default function ExamplePage({ params }) {
             {e.real ? (
               <>
                 <strong>Real client briefing.</strong> The name and logo were changed at the
-                owner&apos;s request — the numbers and the analysis are theirs.
+                owner&apos;s request. The numbers and the analysis are theirs.
               </>
             ) : (
               <>

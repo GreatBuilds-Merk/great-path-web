@@ -11,7 +11,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const p = getPath(params.slug);
   if (!p) return {};
-  return { title: `${p.name} — ${p.tagline}`, description: p.short };
+  return { title: `${p.name} · ${p.tagline}`, description: p.short };
 }
 
 export default function PathPage({ params }) {
@@ -65,7 +65,7 @@ export default function PathPage({ params }) {
           <div className="eyebrow">What we watch</div>
           <h2 style={{ marginTop: 8 }}>The numbers that define progress on this Path.</h2>
           <p style={{ marginTop: 12, color: "var(--muted)" }}>
-            You don't have to invent these. They come loaded with the Path — we tune them to your
+            You don't have to invent these. They come loaded with the Path, and we tune them to your
             business and set your targets. Wondering what that means for your data?{" "}
             <Link href="/data-prep" style={{ color: "var(--navy)", fontWeight: 700 }}>
               Here's what actually happens to it

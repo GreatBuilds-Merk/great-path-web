@@ -107,7 +107,7 @@
   },
   {
    "t": "KEEP THE PIPELINE FULL",
-   "d": "Hold the pipeline at 3\u20134\u00d7 the next quarter's revenue target so signed work stays lined up with crew availability."
+   "d": "Hold the pipeline at 3–4× the next quarter's revenue target so signed work stays lined up with crew availability."
   },
   {
    "t": "PROTECT MARGIN & CRAFTSMANSHIP",
@@ -126,7 +126,7 @@
   },
   {
    "icon": "bar",
-   "label": "BOOKED REVENUE \u00b7 YTD",
+   "label": "BOOKED REVENUE · YTD",
    "value": "$1.44M",
    "delta": "80%",
    "dir": "up",
@@ -143,17 +143,17 @@
    "y": "booked work in hand"
   }
  ],
- "highlight": "Pipeline reached $780K in July, up 8.3% from June and $260K since February \u2014 the clearest signal that the year is on track. Booked revenue stands at $1.44M, roughly 80% of the $1.8M goal and ahead of the seasonal pace with more work still to build. Backlog sits at 5.1 months of scheduled work, so crews are booked out well into Q4. A deep, high-intent pipeline and a full backlog are the clearest signs that the months ahead are well covered.",
+ "highlight": "Pipeline reached $780K in July, up 8.3% from June and $260K since February, the clearest signal that the year is on track. Booked revenue stands at $1.44M, roughly 80% of the $1.8M goal and ahead of the seasonal pace with more work still to build. Backlog sits at 5.1 months of scheduled work, so crews are booked out well into Q4. A deep, high-intent pipeline and a full backlog are the clearest signs that the months ahead are well covered.",
  "takeaways": [
   {
    "icon": "funnel",
    "t": "Pipeline Is the Engine",
-   "d": "Pipeline hit $780K, up 8% for the month. A deep, high-intent pipeline is the best early read on whether 2026 lands on plan \u2014 and whether crews stay booked."
+   "d": "Pipeline hit $780K, up 8% for the month. A deep, high-intent pipeline is the best early read on whether 2026 lands on plan, and whether crews stay booked."
   },
   {
    "icon": "bar",
    "t": "Ahead of Pace to $1.8M",
-   "d": "Booked revenue reached $1.44M \u2014 80% of goal by July \u2014 carried by the spring/summer build season and a signed six-figure fall addition."
+   "d": "Booked revenue reached $1.44M, 80% of goal by July, carried by the spring/summer build season and a signed six-figure fall addition."
   },
   {
    "icon": "clock",
@@ -167,7 +167,7 @@
    "key": "pipeline",
    "title": "PIPELINE ($)",
    "fmt": "k",
-   "note": "Up $260K since February \u2014 coverage is building ahead of Q4."
+   "note": "Up $260K since February. Coverage is building ahead of Q4."
   },
   {
    "icon": "coins",
@@ -188,12 +188,12 @@
   {
    "icon": "people",
    "t": "Capacity Is the Ceiling, Not Leads",
-   "d": "With 5 months of backlog, demand isn't the limit \u2014 skilled crew is. The growth lever is training people to hold the standard so the next big job doesn't dilute quality."
+   "d": "With 5 months of backlog, demand isn't the limit. Skilled crew is. The growth lever is training people to hold the standard so the next big job doesn't dilute quality."
   },
   {
    "icon": "shield",
    "t": "Quality Is Your Pricing Power",
-   "d": "A 95 quality score is why you win premium bids. Score every completed job so the standard is measured, not assumed \u2014 and so new hires can be trained and held to it."
+   "d": "A 95 quality score is why you win premium bids. Score every completed job so the standard is measured, not assumed, and so new hires can be trained and held to it."
   },
   {
    "icon": "coins",
@@ -214,9 +214,9 @@
    "t": "Run a Weighted Pipeline Review",
    "bullets": [
     "List every open opportunity with its dollar value and win probability; total the weighted pipeline.",
-    "Keep coverage at 3\u20134\u00d7 next quarter and flag the big jobs that carry the year."
+    "Keep coverage at 3–4× next quarter and flag the big jobs that carry the year."
    ],
-   "step": "Put all open estimates into one sheet with value \u00d7 probability and total your weighted pipeline this week."
+   "step": "Put all open estimates into one sheet with value × probability and total your weighted pipeline this week."
   },
   {
    "t": "Protect Margin With Estimate-vs-Actual",
@@ -229,20 +229,20 @@
   {
    "t": "Put Your Financial Strength to Work",
    "bullets": [
-    "Set a dedicated CAPEX / expansion fund for a major investment \u2014 equipment, a second crew, or a facility.",
+    "Set a dedicated CAPEX / expansion fund for a major investment: equipment, a second crew, or a facility.",
     "Or begin structured exit and succession planning to protect the value you've built."
    ],
    "step": "Meet with your accountant this month to set a reserve target and decide: reinvest for growth, or begin an exit / succession plan."
   }
  ],
- "challenge": "The focus is keeping a high-quality, high-intent pipeline lined up so signed work flows smoothly into crew availability \u2014 no idle weeks, no rushed scheduling. That means qualifying leads for fit and readiness, sequencing projects to the crew calendar, and protecting the craftsmanship standard as the schedule fills. Get that rhythm right and the business runs at full capacity without ever trading away quality for speed.",
- "closing": "You've built a business people pay a premium for. Keep the pipeline full, hold the line on margin, and score every job so the standard is measured \u2014 not assumed. Do that, and you can take on more of the big work without ever thinning the quality that got you here.",
+ "challenge": "The focus is keeping a high-quality, high-intent pipeline lined up so signed work flows smoothly into crew availability, no idle weeks, no rushed scheduling. That means qualifying leads for fit and readiness, sequencing projects to the crew calendar, and protecting the craftsmanship standard as the schedule fills. Get that rhythm right and the business runs at full capacity without ever trading away quality for speed.",
+ "closing": "You've built a business people pay a premium for. Keep the pipeline full, hold the line on margin, and score every job so the standard is measured, not assumed. Do that, and you can take on more of the big work without ever thinning the quality that got you here.",
  "slug": "lakeside-exteriors",
  "meta": {
   "industry": "Exterior contracting",
   "path": "Sales",
   "revenue": "~$3M annual",
-  "blurb": "Pipeline, booked revenue, and backlog \u2014 a sales-side view of the same engine."
+  "blurb": "Pipeline, booked revenue, and backlog. A sales-side view of the same engine."
  },
  "real": true,
  "anonymized": true

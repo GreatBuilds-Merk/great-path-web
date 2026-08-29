@@ -145,12 +145,12 @@
   {
    "icon": "check",
    "t": "The Business Is Firing on All Cylinders",
-   "d": "Revenue, ticket price, and labor efficiency are all moving in the right direction. This combination is what drives profit\u2014keep the foot on the gas."
+   "d": "Revenue, ticket price, and labor efficiency are all moving in the right direction. This combination is what drives profit. Keep the foot on the gas."
   },
   {
    "icon": "people",
    "t": "Your Team Is Getting More Productive",
-   "d": "Lower labor cost % means the team is doing more with less overtime. Keep reinforcing the habits that are working\u2014start times, planning, and staying ahead of the work."
+   "d": "Lower labor cost % means the team is doing more with less overtime. Keep reinforcing the habits that are working: start times, planning, and staying ahead of the work."
   },
   {
    "icon": "hands",
@@ -168,7 +168,7 @@
    "t": "Lock In Profitable Work",
    "bullets": [
     "Focus on projects that fit your team and deliver strong margins.",
-    "Be selective\u2014every job should make your business better."
+    "Be selective. Every job should make your business better."
    ],
    "step": "Review active bids and proposals this week. Challenge any project that will strain your team or margins."
   },
@@ -184,18 +184,18 @@
    "t": "Protect Labor Efficiency",
    "bullets": [
     "Keep crews right-sized and minimize overtime.",
-    "Plan the week on Friday\u2014execute Monday."
+    "Plan the week on Friday, execute Monday."
    ],
    "step": "Hold a 15-minute Friday planning huddle with your project managers to set priorities for the next week."
   }
  ],
- "closing": "You're trending in the right direction. Stay disciplined on the basics\u2014plan the work, communicate clearly, and hold the line on pricing. Do that, and the rest will take care of itself.",
+ "closing": "You're trending in the right direction. Stay disciplined on the basics: plan the work, communicate clearly, and hold the line on pricing. Do that, and the rest will take care of itself.",
  "slug": "summit-air-mechanical",
  "meta": {
   "industry": "HVAC & mechanical contracting",
   "path": "Operator",
   "revenue": "~$2M annual",
-  "blurb": "Six months of revenue, ticket price, and labor efficiency \u2014 and the three moves that came out of it."
+  "blurb": "Six months of revenue, ticket price, and labor efficiency, and the three moves that came out of it."
  },
  "real": false,
  "anonymized": false

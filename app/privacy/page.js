@@ -44,7 +44,7 @@ export default function Privacy() {
 
         <Clause n="Second" title="What we collect">
           <P>
-            <strong>Contact information</strong> you give us — your name, email, business name, and
+            <strong>Contact information</strong> you give us: your name, email, business name, and
             anything else you share when you book a call, send an email, or fill in a form.
           </P>
           <P>
@@ -53,7 +53,7 @@ export default function Privacy() {
             you choose to send.
           </P>
           <P>
-            <strong>Basic website analytics</strong> — which pages get visited and roughly where
+            <strong>Basic website analytics</strong>, meaning which pages get visited and roughly where
             visitors come from. This is aggregate traffic data and is not tied to you personally.
           </P>
           <P>We do not buy data about you, and we do not track you across other websites.</P>
@@ -99,7 +99,7 @@ export default function Privacy() {
 
         <Clause n="Sixth" title="How your data is protected">
           <P>
-            Access is limited to the people who need it to do your work — in practice, that is
+            Access is limited to the people who need it to do your work. In practice, that is
             currently one person. Files are kept in access-controlled storage, and reports are
             shared through private links rather than published anywhere public.
           </P>
@@ -112,7 +112,7 @@ export default function Privacy() {
         <Clause n="Seventh" title="Your choices">
           <P>
             You can ask us at any time to show you what we hold, correct it, delete it, or stop
-            contacting you. There is no form to fill in — email{" "}
+            contacting you. There is no form to fill in. Just email{" "}
             <a href={`mailto:${BRAND.emailDan}`} style={{ color: "var(--navy)", fontWeight: 700 }}>
               {BRAND.emailDan}
             </a>{" "}

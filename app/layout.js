@@ -9,7 +9,7 @@ export const metadata = {
   // SITE_URL wins in production; BRAND.siteUrl is the single-source fallback.
   metadataBase: new URL(process.env.SITE_URL || BRAND.siteUrl),
   title: {
-    default: `${BRAND.name} — ${BRAND.tagline}`,
+    default: `${BRAND.name} · ${BRAND.tagline}`,
     template: `%s · ${BRAND.shortName}`,
   },
   description: BRAND.promise,

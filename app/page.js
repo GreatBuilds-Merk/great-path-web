@@ -208,7 +208,7 @@ export default function Home() {
             <div className="eyebrow">Our Paths</div>
             <h2 style={{ marginTop: 8 }}>Find the path that fits where you are.</h2>
             <p>
-              One engine, five ways to put it to work. Start with the flagship — or jump straight
+              One engine, five ways to put it to work. Start with the flagship, or jump straight
               to what you need today.
             </p>
           </div>
@@ -397,7 +397,7 @@ export default function Home() {
             <h2 style={{ marginTop: 8 }}>Priced to the size of your business.</h2>
             <p>
               Fortune 500 technology and insight, at small business pricing. Your rate is set from
-              your revenue — so as we help you grow, your price never spikes.
+              your revenue, so as we help you grow, your price never spikes.
             </p>
           </div>
 
@@ -444,7 +444,7 @@ export default function Home() {
             “{FOUNDER.quote}”
           </blockquote>
           <p style={{ fontWeight: 700 }}>
-            — {FOUNDER.name}, <span style={{ color: "var(--muted)", fontWeight: 500 }}>{FOUNDER.title}</span>
+            {FOUNDER.name}, <span style={{ color: "var(--muted)", fontWeight: 500 }}>{FOUNDER.title}</span>
           </p>
 
           <div
@@ -496,7 +496,7 @@ export default function Home() {
           <h2>Ready to see your numbers work for you?</h2>
           <p className="lead" style={{ marginTop: 14 }}>
             One short call. We'll show you the insight hiding in your
-            business — and the first moves to grow it.
+            business, and the first moves to grow it.
           </p>
           <div className="btn-row" style={{ marginTop: 26, justifyContent: "center" }}>
             <a href={BRAND.bookingUrl} className="btn btn-gold btn-lg">

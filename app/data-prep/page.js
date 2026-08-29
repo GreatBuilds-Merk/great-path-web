@@ -105,7 +105,7 @@ export default function DataPrep() {
                 <Link href="/paths/cleanup" style={{ color: "var(--navy)", fontWeight: 700 }}>
                   Cleanup Path
                 </Link>{" "}
-                is for — and we&apos;ll tell you honestly if you need it.
+                is for, and we&apos;ll tell you honestly if you need it.
               </p>
             </div>
           </div>

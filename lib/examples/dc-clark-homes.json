@@ -100,7 +100,7 @@
    "y": "12.4% vs. Jun 2025"
   }
  ],
- "highlight": "Revenue reached $312K in June, up 7.6% from May and 11.4% year-over-year \u2014 the strongest month of 2026. Gross margin expanded to 24.8% as tighter cost segmentation and lower material waste took hold. Cost per square foot fell again, reflecting sharper bidding and better crew and material planning. With a full pipeline heading into Q3, the focus now is protecting margin as build volume grows.",
+ "highlight": "Revenue reached $312K in June, up 7.6% from May and 11.4% year-over-year, the strongest month of 2026. Gross margin expanded to 24.8% as tighter cost segmentation and lower material waste took hold. Cost per square foot fell again, reflecting sharper bidding and better crew and material planning. With a full pipeline heading into Q3, the focus now is protecting margin as build volume grows.",
  "takeaways": [
   {
    "icon": "trend",
@@ -131,7 +131,7 @@
    "key": "costSqFt",
    "title": "COST PER SQUARE FOOT",
    "fmt": "money",
-   "note": "Down $16/sq ft since January \u2014 tighter bids and less waste."
+   "note": "Down $16/sq ft since January. Tighter bids and less waste."
   },
   {
    "icon": "coins",
@@ -145,7 +145,7 @@
   {
    "icon": "calc",
    "t": "Cost Segmentation Is Paying Off",
-   "d": "Breaking every project into material, labor, and overhead shows where margin actually comes from. Materials are running ~44% of revenue and labor ~26%\u2014watch both by project type."
+   "d": "Breaking every project into material, labor, and overhead shows where margin actually comes from. Materials are running ~44% of revenue and labor ~26%. Watch both by project type."
   },
   {
    "icon": "hammer",
@@ -155,7 +155,7 @@
   {
    "icon": "bin",
    "t": "Waste Is Real Money",
-   "d": "Trimming waste from 6.8% to 4.1% added margin without raising a single price. Protect this\u2014tight takeoffs and material staging are the levers."
+   "d": "Trimming waste from 6.8% to 4.1% added margin without raising a single price. Protect this. Tight takeoffs and material staging are the levers."
   },
   {
    "icon": "leads",
@@ -183,13 +183,13 @@
   {
    "t": "Automate Lead Follow-Up",
    "bullets": [
-    "Put every new inquiry into an automatic follow-up sequence\u2014text, email, and a callback reminder.",
+    "Put every new inquiry into an automatic follow-up sequence: text, email, and a callback reminder.",
     "Never let an estimate request sit more than an hour."
    ],
    "step": "Set up an auto-response plus a 5-touch follow-up for new leads so no contact slips through the cracks."
   }
  ],
- "closing": "You're building the right way\u2014growing revenue, protecting margin, and cutting waste. Keep segmenting your costs, planning crews and materials to the schedule, and following up fast on every lead. Do that, and the profit follows.",
+ "closing": "You're building the right way: growing revenue, protecting margin, and cutting waste. Keep segmenting your costs, planning crews and materials to the schedule, and following up fast on every lead. Do that, and the profit follows.",
  "slug": "dc-clark-homes",
  "meta": {
   "industry": "Custom home building",

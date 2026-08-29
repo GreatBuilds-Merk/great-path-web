@@ -19,7 +19,7 @@ export default function PathsIndex() {
           <h1 style={{ marginTop: 12 }}>Start by choosing where you're going.</h1>
           <p className="lead" style={{ marginTop: 16 }}>
             A Path is a destination plus the numbers that measure progress toward it. Pick the
-            one that matches what you're trying to do — we'll confirm the fit on a call before
+            one that matches what you're trying to do. We'll confirm the fit on a call before
             anything starts.
           </p>
         </div>

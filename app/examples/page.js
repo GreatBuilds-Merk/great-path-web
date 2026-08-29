@@ -19,7 +19,7 @@ export default function Examples() {
           </div>
           <h1 style={{ marginTop: 12 }}>This is what shows up every month.</h1>
           <p className="lead" style={{ marginTop: 16 }}>
-            Two of these are samples — illustrative businesses built to show the format and the
+            Two of these are samples, illustrative businesses built to show the format and the
             depth of the analysis. The third is a real client briefing, with the name and logo
             changed at their request.
           </p>
@@ -85,7 +85,7 @@ export default function Examples() {
         <div className="wrap narrow" style={{ textAlign: "center" }}>
           <h2>Want to see one built from your numbers?</h2>
           <p className="lead" style={{ marginTop: 14 }}>
-            On a discovery call we&apos;ll map what your first briefing would look like — using the
+            On a discovery call we&apos;ll map what your first briefing would look like, using the
             data you already have.
           </p>
           <div className="btn-row" style={{ marginTop: 24, justifyContent: "center" }}>

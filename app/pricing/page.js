@@ -38,7 +38,7 @@ export default function Pricing() {
           <h1 style={{ marginTop: 12 }}>Priced to the size of your business.</h1>
           <p className="lead" style={{ marginTop: 16 }}>
             Fortune 500 technology and insight, at small business pricing. One flat price for the
-            engine on its own — and for the advised tiers, a rate that fits the business and
+            engine on its own. For the advised tiers, a rate that fits the business and
             improves as you grow.
           </p>
           <div className="btn-row" style={{ marginTop: 26 }}>
@@ -56,7 +56,7 @@ export default function Pricing() {
             <div className="eyebrow">The Operator Path</div>
             <h2 style={{ marginTop: 8 }}>Three tiers. Same engine underneath.</h2>
             <p>
-              The difference between them is how much human sits on top of it — and how deep the
+              The difference between them is how much human sits on top of it, and how deep the
               analysis goes.
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function Pricing() {
                   )}
                 </div>
                 <p className="small" style={{ marginBottom: 12 }}>
-                  {t.flatMonthly ? t.note : "Scales with your revenue — see the table below."}
+                  {t.flatMonthly ? t.note : "Scales with your revenue. See the table below."}
                 </p>
 
                 <p style={{ fontSize: 14.5, marginBottom: 14 }}>{t.summary}</p>
@@ -264,15 +264,15 @@ export default function Pricing() {
             <div>
               <h3>What if my revenue changes mid-year?</h3>
               <p style={{ marginTop: 8, color: "var(--muted)" }}>
-                Nothing changes mid-year. We revisit your rate at your one-year mark — increases on
-                a twenty-four month average, decreases on the last twelve.
+                Nothing changes mid-year. We revisit your rate at your one-year mark. Increases use
+                a twenty-four month average, decreases the last twelve.
               </p>
             </div>
             <div>
               <h3>Do I need new software?</h3>
               <p style={{ marginTop: 8, color: "var(--muted)" }}>
                 No. We connect the tools you already use. Setup covers building that connection and
-                your reporting — there&apos;s nothing new to buy.
+                your reporting. There&apos;s nothing new to buy.
               </p>
             </div>
           </div>

@@ -17,9 +17,9 @@ const KPIS = [
 ];
 
 const ACTIONS = [
-  "Re-engage 12 lapsed customers — they drove 22% of Q2 profit.",
+  "Re-engage 12 lapsed customers. They drove 22% of Q2 profit.",
   "Raise price on your top 3 services; demand is inelastic here.",
-  "Watch Thursday staffing — labor % is trending over target.",
+  "Watch Thursday staffing. Labor % is trending over target.",
 ];
 
 export default function BriefMockup() {
